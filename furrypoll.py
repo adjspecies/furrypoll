@@ -39,6 +39,10 @@ def surveySexuality():
 def surveyComplete():
     pass
 
+@app.route('/survey/cancel/')
+def surveyCancel():
+    pass
+
 if __name__ == '__main__':
     app.secret_key = 'Development key'
     app.run()
