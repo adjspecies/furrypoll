@@ -48,13 +48,6 @@ class Character(db.EmbeddedDocument):
 
 class Sexuality(db.EmbeddedDocument):
     sex_importance = db.ListField(db.EmbeddedDocumentField(NumberPerOption))
-    # suiting
-    # babyfur
-    # zoophilia
-    # plushophilia
-    # hyper
-    # macro/micro
-    # vore
     interests = db.ListField(db.EmbeddedDocumentField(StringPerOption))
     other_interests = db.EmbeddedDocumentField(PotentiallySubjectiveResponse)
 

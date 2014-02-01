@@ -1,20 +1,64 @@
-sex_importance = [
+from models import PotentiallySubjectiveResponse as PSR
+
+question_options = {
+    'clinical_sex': {
+        'female': PSR(value='female'),
+        'male': PSR(value='male'),
+        'intersex': PSR(value='intersex'),
+        'mtf_female': PSR(value='mtf_female'),
+        'ftm_male': PSR(value='ftm_male'),
+        'other': PSR(subjective=True),
+    },
+    'gender_identity': {
+        'male': PSR(value='male'),
+        'mostly_male': PSR(value='mostly_male'),
+        'both': PSR(value='both'),
+        'mostly_female': PSR(value='mostly_female'),
+        'female': PSR(value='female'),
+        'genderqueer': PSR(value='genderqueer'),
+        'neutrois': PSR(value='neutrois'),
+        'nonbinary_nos': PSR(value='nonbinary_nos'),
+        'other': PSR(subjective=True),
+    },
+    'sexual_orientation': {
+        'kinsey_0': PSR(value='kinsey_0'),
+        'kinsey_1': PSR(value='kinsey_1'),
+        'kinsey_2': PSR(value='kinsey_2'),
+        'kinsey_3': PSR(value='kinsey_3'),
+        'kinsey_4': PSR(value='kinsey_4'),
+        'kinsey_5': PSR(value='kinsey_5'),
+        'kinsey_6': PSR(value='kinsey_6'),
+        'pansexual': PSR(value='pansexual'),
+        'omnisexual': PSR(value='omnisexual'),
+        'other': PSR(subjective=True),
+    },
+    'race': {
+        'white': PSR(value='white'),
+        'black': PSR(value='black'),
+        'hispanic': PSR(value='hispanic'),
+        'native_american_pacific_islander': PSR(value='native_american_pacific_islander'),
+        'middle_eastern': PSR(value='middle_eastern'),
+        'other': PSR(subjective=True),
+    },
+    'spirituality': {},
+    'occupation': {},
+    'education': {},
+    'relationship': {},
+}
+
+political_views = [
     (
-        'self',
-        '''On a scale of 1-10, how important is sex to you personally, in the context of the furry subculture?''',
+        'social',
+        '''Social political views''',
+        '''More social restrictions (authoritarian)''',
+        '''Fewer social restrictions (anarchist)''',
     ),
     (
-        'fandom',
-        '''On a scale of 1-10, how important do you think sex is to the furry subculture?''',
-    ),
-    (
-        'others',
-        '''On a scale of 1-10, how important do you believe sex is to other furries?''',
-    ),
-    (
-        'public',
-        '''On a scale of 1-10, how important do you think the public &emdash; among those who are aware of it &emdash; believes sex is to the furry subculture?''',
-    ),
+        'economic',
+        '''Economic political views''',
+        '''More economic restrictions (regulated)''',
+        '''Fewer economic restrictions (laissez-faire)''',
+    )
 ]
 
 psychographic_battery = [
@@ -138,4 +182,74 @@ psychographic_battery = [
         'enjoy_traveling',
         '''I enjoy traveling and discovering new things and places''',
     ),
+]
+
+sex_importance = [
+    (
+        'self',
+        '''how important is sex to you personally, in the context of the furry subculture?''',
+    ),
+    (
+        'fandom',
+        '''how important do you think sex is to the furry subculture?''',
+    ),
+    (
+        'others',
+        '''how important do you believe sex is to other furries?''',
+    ),
+    (
+        'public',
+        '''how important do you think the public &emdash; among those who are aware of it &emdash; believes sex is to the furry subculture?''',
+    ),
+]
+
+interests = [
+    (
+        'fursuit_sex',
+        '''Fursuit sex''',
+    ),
+    (
+        'babyfur',
+        '''Babyfur, cub, AB/DL, or other age-play''',
+    ),
+    (
+        'zoophilia',
+        '''Zoophilia''',
+    ),
+    (
+        'plushophilia',
+        '''Plushophilia''',
+    ),
+    (
+        'hyper',
+        '''Hyper (over-sized) sexual anatomy''',
+    ),
+    (
+        'macro_micro',
+        '''Macro (incredibly large) or micro (incredibly small) characters''',
+    ),
+    (
+        'vorarephilia',
+        '''Vorarephilia''',
+    ),
+    (
+        'bondage',
+        '''Bondage''',
+    ),
+    (
+        's_m',
+        '''Sadism and/or masochism'''
+    ),
+    (
+        'domination',
+        '''Domination/submission, or power-play'''
+    ),
+    (
+        'watersports',
+        '''Watersports''',
+    ),
+    (
+        'fertility_etc',
+        '''Fertility, 'heat', pregnophilia, and other interests related to fertility'''
+    )
 ]
