@@ -13,6 +13,7 @@ class Overview(db.EmbeddedDocument):
     birth_year = db.IntField()
     clinical_sex = db.EmbeddedDocumentField(PotentiallySubjectiveResponse)
     gender_identity = db.EmbeddedDocumentField(PotentiallySubjectiveResponse)
+    gender_identity_coords = db.EmbeddedDocumentField(GenderIdentityCoordinates)
     sexual_orientation = db.EmbeddedDocumentField(PotentiallySubjectiveResponse)
     country = db.StringField(max_length=2, default='xx')
     state_province = db.StringField(max_length=2, default='xx')
@@ -24,6 +25,7 @@ class Overview(db.EmbeddedDocument):
     education = db.EmbeddedDocumentField(PotentiallySubjectiveResponse)
     relationship = db.EmbeddedDocumentField(PotentiallySubjectiveResponse)
     partner_is_furry = db.BooleanField()
+    long_distance_relationship = db.BooleanField()
     how_furry = db.IntField()
     how_long_known = db.FloatField()
     how_long_member = db.FloatField()
@@ -33,6 +35,7 @@ class Overview(db.EmbeddedDocument):
     non_furries_perception_accuracy = db.StringField(max_length=30)
     how_human = db.EmbeddedDocumentField(PotentiallySubjectiveResponse)
     gender_in_furry = db.StringField(max_length=30)
+    gender_in_furry_coords = db.EmbeddedDocumentField(GenderIdentityCoordinates)
     furry_activities = db.ListField(db.EmbeddedDocumentField(NumberPerOption))
     furry_activities_opinion = db.ListField(db.EmbeddedDocumentField(NumberPerOption))
     non_furry_activities = db.ListField(db.EmbeddedDocumentField(NumberPerOption))
@@ -41,6 +44,12 @@ class Overview(db.EmbeddedDocument):
     conventions = db.ListField(db.StringField(max_length=30))
     furry_websites = db.ListField(db.EmbeddedDocumentField(StringPerOption))
     characters = db.ListField(db.EmbeddedDocumentField(Character))
+
+class GenderIdentityCoordinates(db.EmbeddedDocument):
+    male = db.FloatField()
+    female = db.FloatField()
+    male_quantized = db.IntField()
+    female_quantized = db.IntField()
 
 class Character(db.EmbeddedDocument):
     species = db.ListField(db.EmbeddedDocumentField(PotentiallySubjectiveResponse))
@@ -60,7 +69,7 @@ class StringPerOption(db.EmbeddedDocument):
     value = db.StringField(max_length=30)
 
 class PotentiallySubjectiveResponse(db.EmbeddedDocument):
-    subjective = db.BooleanField(default=False)
+    subjective = db.BooleanField()
     value = db.StringField(max_length=2000)
 
 class ResponseMetadata(db.EmbeddedDocument):
