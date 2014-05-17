@@ -3,6 +3,50 @@
 {% block header %}Part 1 - Overview{% endblock %}
 {% block body %}
 <form method="post">
+    <dl>
+        <dt>Birth Month and Year</dt>
+        <dd>
+            <select name="birth_month" data-number="1">
+                <option></option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <select name="birth_year" data-number="2">
+                {% for year in questions.question_options.birth_year %}
+                <option value="{{ year }}">{{ year }}</option>
+                {% endfor %}
+            </select>
+            <div class="explanation"></div>
+        </dd>
+        <dt>Clinical sex</dt>
+        <dd>
+            <input type="radio" id="3_female" name="clinical_sex" value="female" data-number="3">
+            <label for="3_female">Female</label><br />
+            <input type="radio" id="3_male" name="clinical_sex" value="male" data-number="3">
+            <label for="3_male">Male</label><br />
+            <input type="radio" id=3_intersex" name="clinical_sex" value="intersex" data-number="3">
+            <label for="3_intersex">Intersex</label><br />
+            <input type="radio" id="3_mtf_female" name="clinical_sex" value="mtf_female" data-number="3">
+            <label for="3_mtf_female">Transgender, identifying as female</label><br />
+            <input type="radio" id="3_ftm_male" name="clinical_sex" value="ftm_male" data-number="3">
+            <label for="3_ftm_male">Transgender, identifying as male</label><br />
+            <input type="radio" id="3_other" name="clinical_sex" value="other" data-number="3">
+            <label for="3_">Other</label><br />
+            Optionally, please specify:
+            <input type="text" name="clinical_sex_other" data-number="3" 
+            disabled="disabled" />
+        </dd>
+    </dl>
     <input type="submit" name="submit" value="Continue to the psychographic battery" />
 </form>
 {% endblock %}

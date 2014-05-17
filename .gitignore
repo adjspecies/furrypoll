@@ -37,3 +37,9 @@ nosetests.xml
 
 # Virtualenv
 .venv
+
+# Node
+node_modules
+
+# Generated coffeescript
+static/js

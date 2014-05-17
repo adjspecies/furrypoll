@@ -33,7 +33,8 @@ class GenderIdentityCoordinates(db.EmbeddedDocument):
     female_quantized = db.IntField()
 
 class Character(db.EmbeddedDocument):
-    species = db.ListField(db.EmbeddedDocumentField('PotentiallySubjectiveResponse'))
+    species_category = db.StringField(max_length=200)
+    species_text = db.ListField(db.EmbeddedDocumentField('PotentiallySubjectiveResponse'))
     reason = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
 
 class Sexuality(db.EmbeddedDocument):

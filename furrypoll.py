@@ -74,16 +74,83 @@ def surveyOverview():
     survey = models.Response.objects.get(id=session['response_id'])
     if request.method == 'POST':
         tp = models.Touchpoint(
-            touchpoint_type = -1
+            touchpoint_type=-1
         )
         survey.metadata.touchpoints.append(tp)
-        # save answers
+        for key, value in request.form:
+            if key in questions.question_options:
+                if value == 'other':
+                    value = request.form.pop('{}_other'.format(key), 'other (not specified)')
+                psr = models.PotentiallySubjectiveresponse(
+                    value=value,
+                    subjective=questions.question_options[key][value].subjective
+                )
+                survey.overview.__setattr__(key, psr)
+            else:
+                indicator = key[:3]
+                if indicator == 'gic':
+                    name = key[4:7]
+                    gic = models.GenderIdentityCoordinates(
+                        male=request.form.pop('gic_{}_male'.format(name), ''),
+                        female=request.form.pop('gic_{}_female'.format(name), ''),
+                        male_quantized=request.form.pop('gic_{}_male_quantized'.format(name), ''),
+                        female_quantized=equest.form.pop('gic_{}_female_quantized'.format(name), ''),
+                    )
+                    # TODO move to questions
+                    question_name = {
+                        'gic': 'gender_identity_coords',
+                        'gif': 'gender_in_furry_coords',
+                    }[name]
+                    survey.overview.__setattr__(question_name, gic)
+                elif indicator == 'npo':
+                    name = key[4:7]
+                    npo = models.NumberPerOption(
+                        option=key[8:],
+                        value=value
+                    )
+                    question_name = {
+                        'pol': 'political_views',
+                        'fac': 'furry_activities',
+                        'fao': 'furry_activities_opinion',
+                        'nfa': 'non_furry_activities',
+                        'imp': 'furry_importance',
+                    }[name]
+                    survey.overview.__getattribute__(question_name).append(npo)
+                elif indicator == 'spo':
+                    name = key[4:7]
+                    spo = models.StringPerOption(
+                        option=key[8:],
+                        value=value
+                    )
+                    question_name = {
+                        'fws': 'furry_websites',
+                    }[name]
+                    survey.overview.__getattribute__(question_name).append(spo)
+                elif indicator == 'chr':
+                    index = key[4:7]
+                    species_category = request.form.pop('chr_{}_category'.format(index), '')
+                    species_text = request.form.pop('chr_{}_species'.format(index), species_category)
+                    reason = request.form.pop('chr_{}_reason'.format(index), '')
+                    character = models.Character(
+                        species_category=species_category,
+                        species_text=models.PotentiallySubjectiveResponse(
+                            subjective=True,
+                            value=species_text
+                        ),
+                        reason=models.PotentiallySubjectiveResponse(
+                            subjective=True,
+                            value=reason
+                        )
+                    )
+                    survey.overview.characters.append(character)
+                else:
+                    survey.overview.__setattr__(key, value)
         survey.save()
         return redirect('/survey/psychographic/')
     else:
         if -1 in [tp.touchpoint_type for tp in survey.metadata.touchpoints]:
             return redirect('/survey/psychographic/')
-        return render_template('overview.html')
+        return render_template('overview.html', questions=questions)
 
 @app.route('/survey/psychographic/', methods=['GET', 'POST'])
 def surveyPsychographic():
