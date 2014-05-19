@@ -9,6 +9,7 @@ class Touchpoint(db.EmbeddedDocument):
         -1, -2, -3 - Answers to page 1, 2, or 3
         -4 - survey completed
         -5 - survey cancelled
+        -6 - survey marked as coming from a duplicate IP
         1...n - answers to question 1...n
     """
     touchpoint_type = db.IntField()

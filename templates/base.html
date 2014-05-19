@@ -3,6 +3,9 @@
         <title>The 2014 Furry Survey</title>
     </head>
     <body>
+        {% for message in get_flashed_messages() %}
+            <div class="message">{{ message|safe }}</div>
+        {% endfor %}
         <h1>{% block header %}{% endblock %}</h1>
         {% block body %}{% endblock %}
     </body>

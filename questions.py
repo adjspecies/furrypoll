@@ -1,5 +1,5 @@
 question_options = {
-    'birth_year': [2014 - i for i in range(0, 100)],
+    '_birth_year': [2014 - i for i in range(0, 100)],
     'clinical_sex': {
         'female': { 'subjective': False },
         'male': { 'subjective': False },

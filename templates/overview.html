@@ -22,7 +22,7 @@
                 <option value="12">December</option>
             </select>
             <select name="birth_year" data-number="2">
-                {% for year in questions.question_options.birth_year %}
+                {% for year in questions.question_options._birth_year %}
                 <option value="{{ year }}">{{ year }}</option>
                 {% endfor %}
             </select>
@@ -48,5 +48,7 @@
         </dd>
     </dl>
     <input type="submit" name="submit" value="Continue to the psychographic battery" />
+    <input type="submit" name="complete" value="Complete the survey" />
+    <input type="submit" name="cancel" value="Cancel your response" />
 </form>
 {% endblock %}
