@@ -4,8 +4,9 @@
 {% block body %}
 <form method="post">
     <dl>
-        <dt>Birth Month and Year</dt>
+        <dt>When were you born?</dt>
         <dd>
+            <div class="explain">This question is asked to check for any shifts in the overall age of the furry subculture, as well as to check for signs of 'aging out'.</div>
             <select name="birth_month" data-number="1">
                 <option></option>
                 <option value="1">January</option>
@@ -28,23 +29,638 @@
             </select>
             <div class="explanation"></div>
         </dd>
-        <dt>Clinical sex</dt>
+        <dt>What is your clinical sex</dt>
         <dd>
-            <input type="radio" id="3_female" name="clinical_sex" value="female" data-number="3">
+            <div class="explain">
+                <p>This question is asked to understand the breakdown of clinical sex within furry.</p>
+                <p>Note: we understand that this question is delicate for a great many people, and have thus tried to word it carefully.  This includes the available responses; but again, we understand that these, too, can be difficult for some to mark down.  We ask this specifically to explore perceived gaps in clinical (sometimes referred to as biological) sex within the furry subculture.  Please mark whatever you feel comfortable with, and feel free to provide additional information in the 'other' field, and remember that this question is <em>optional</em>.</p>
+            </div>
+            <input type="radio" id="3_female" name="clinical_sex" value="female" data-number="3" />
             <label for="3_female">Female</label><br />
-            <input type="radio" id="3_male" name="clinical_sex" value="male" data-number="3">
+            <input type="radio" id="3_male" name="clinical_sex" value="male" data-number="3" />
             <label for="3_male">Male</label><br />
-            <input type="radio" id=3_intersex" name="clinical_sex" value="intersex" data-number="3">
+            <input type="radio" id=3_intersex" name="clinical_sex" value="intersex" data-number="3" />
             <label for="3_intersex">Intersex</label><br />
-            <input type="radio" id="3_mtf_female" name="clinical_sex" value="mtf_female" data-number="3">
+            <input type="radio" id="3_mtf_female" name="clinical_sex" value="mtf_female" data-number="3" />
             <label for="3_mtf_female">Transgender, identifying as female</label><br />
-            <input type="radio" id="3_ftm_male" name="clinical_sex" value="ftm_male" data-number="3">
+            <input type="radio" id="3_ftm_male" name="clinical_sex" value="ftm_male" data-number="3" />
             <label for="3_ftm_male">Transgender, identifying as male</label><br />
-            <input type="radio" id="3_other" name="clinical_sex" value="other" data-number="3">
-            <label for="3_">Other</label><br />
+            <input type="radio" id="3_other" name="clinical_sex" value="other" data-number="3" />
+            <label for="3_other">Other</label><br />
             Optionally, please specify:
-            <input type="text" name="clinical_sex_other" data-number="3" 
-            disabled="disabled" />
+            <input type="text" name="clinical_sex_other" data-number="3" disabled="disabled" />
+        </dd>
+        <dt>What is your self-identified gender</dt>
+        <dd>
+            <div class="explain">This question is asked to understand the breakdown of gender identity within the furry subculture.</div>
+            <input type="radio" id="4_female" name="gender_identity" value="female" data-number="4" />
+            <label for="4_female">Female</label><br />
+            <input type="radio" id="4_mostly_female" name="gender_identity" value="mostly_female" data-number="4" />
+            <label for="4_mostly_female">Mostly female</label><br />
+            <input type="radio" id="4_both" name="gender_identity" value="both" data-number="4" />
+            <label for="4_both">Both</label><br />
+            <input type="radio" id="4_mostly_male" name="gender_identity" value="mostly_male" data-number="4" />
+            <label for="4_mostly_male">Mostly male</label><br />
+            <input type="radio" id="4_male" name="gender_identity" value="male" data-number="4" />
+            <label for="4_male">Male</label><br />
+            <input type="radio" id="4_genderqueer" name="gender_identity" value="genderqueer" data-number="4" />
+            <label for="4_genderqueer">Genderqueer/genderfluid</label><br />
+            <input type="radio" id="4_neutrois" name="gender_identity" value="neutrois" data-number="4" />
+            <label for="4_neutrois">Neutrois/agender</label><br />
+            <input type="radio" id="4_nonbinary_nos" name="gender_identity" value="nonbinary_nos" data-number="4" />
+            <label for="4_nonbinary_nos">Non-binary (not otherwise specified)</label><br />
+            <input type="radio" id="4_other" name="gender_identity" value="other" data-number="4" />
+            <label for="4_other">Other</label><br />
+            Optionally, please specify:
+            <input type="text" name="gender_identity_other" data-number="4" disabled="disabled" />
+            <p>Optional: in addition, you may click anywhere in the diamond below to indicate both where you feel you fit on the gender spectrum, as well as how strongly you experience gender</p>
+            <div>GENDER WIDGET HERE</div>
+        </dd>
+        <dt>What is your sexual orientation?</dt>
+        <dd>
+            <div class="explain">This question is asked to explore the breakdown of sexual orientation within the fandom, and generally follows the Kinsey scale.</div>
+            <input type="radio" id="5_kinsey_0" name="sexual_orientation" value="kinsey_0" data-number="5" />
+            <label for="5_kinsey_0">Completely heterosexual</label><br />
+            <input type="radio" id="5_kinsey_1" name="sexual_orientation" value="kinsey_1" data-number="5" />
+            <label for="5_kinsey_0">Mostly heterosexual</label><br />
+            <input type="radio" id="5_kinsey_2" name="sexual_orientation" value="kinsey_2" data-number="5" />
+            <label for="5_kinsey_0">Bisexual, leaning heterosexual</label><br />
+            <input type="radio" id="5_kinsey_3" name="sexual_orientation" value="kinsey_3" data-number="5" />
+            <label for="5_kinsey_0">Bisexual</label><br />
+            <input type="radio" id="5_kinsey_4" name="sexual_orientation" value="kinsey_4" data-number="5" />
+            <label for="5_kinsey_0">Bisexual, leaning homosexual</label><br />
+            <input type="radio" id="5_kinsey_5" name="sexual_orientation" value="kinsey_5" data-number="5" />
+            <label for="5_kinsey_0">Mostly homosexual</label><br />
+            <input type="radio" id="5_kinsey_6" name="sexual_orientation" value="kinsey_6" data-number="5" />
+            <label for="5_kinsey_0">Completely Homosexual</label><br />
+            <input type="radio" id="5_pansexual" name="sexual_orientation" value="pansexual" data-number="5" />
+            <label for="5_kinsey_0">Pansexual</label><br />
+            <input type="radio" id="5_asexual" name="sexual_orientation" value="asexual" data-number="5" />
+            <label for="5_kinsey_0">Asexual</label><br />
+            <input type="radio" id="5_other" name="sexual_orientation" value="other" data-number="5" />
+            <label for="5_other">Other</label><br />
+            Optionally, please specify:
+            <input type="text" name="sexual_orientation_other" data-number="5" disabled="disabled" />
+        </dd>
+        <dt>Where do you live?</dt>
+        <dd>
+            <div class="explain">This question is asked to investigate where furries live in the world and how that shifts over time.</div>
+            <label for="6_country">Country</label>
+            <select id="6_country" name="country">
+                <option value="">-- Select --</option>
+                <option value="af">Afghanistan</option>
+                <option value="ax">Åland Islands</option>
+                <option value="al">Albania</option>
+                <option value="dz">Algeria</option>
+                <option value="as">American Samoa</option>
+                <option value="ad">Andorra</option>
+                <option value="ao">Angola</option>
+                <option value="ai">Anguilla</option>
+                <option value="aq">Antarctica</option>
+                <option value="ag">Antigua and Barbuda</option>
+                <option value="ar">Argentina</option>
+                <option value="am">Armenia</option>
+                <option value="aw">Aruba</option>
+                <option value="au">Australia</option>
+                <option value="at">Austria</option>
+                <option value="az">Azerbaijan</option>
+                <option value="bs">Bahamas</option>
+                <option value="bh">Bahrain</option>
+                <option value="bd">Bangladesh</option>
+                <option value="bb">Barbados</option>
+                <option value="by">Belarus</option>
+                <option value="be">Belgium</option>
+                <option value="bz">Belize</option>
+                <option value="bj">Benin</option>
+                <option value="bm">Bermuda</option>
+                <option value="bt">Bhutan</option>
+                <option value="bo">Bolivia</option>
+                <option value="ba">Bosnia and Herzegovina</option>
+                <option value="bw">Botswana</option>
+                <option value="bv">Bouvet Island</option>
+                <option value="br">Brazil</option>
+                <option value="io">British Indian Ocean Territory</option>
+                <option value="bn">Brunei Darussalam</option>
+                <option value="bg">Bulgaria</option>
+                <option value="bf">Burkina Faso</option>
+                <option value="bi">Burundi</option>
+                <option value="kh">Cambodia</option>
+                <option value="cm">Cameroon</option>
+                <option value="ca">Canada</option>
+                <option value="cv">Cape Verde</option>
+                <option value="ky">Cayman Islands</option>
+                <option value="cf">Central African Republic</option>
+                <option value="td">Chad</option>
+                <option value="cl">Chile</option>
+                <option value="cn">China</option>
+                <option value="cx">Christmas Island</option>
+                <option value="cc">Cocos (Keeling) Islands</option>
+                <option value="co">Colombia</option>
+                <option value="km">Comoros</option>
+                <option value="cg">Congo</option>
+                <option value="cd">Congo, The Democratic Republic of The</option>
+                <option value="ck">Cook Islands</option>
+                <option value="cr">Costa Rica</option>
+                <option value="ci">Cote D'ivoire</option>
+                <option value="hr">Croatia</option>
+                <option value="cu">Cuba</option>
+                <option value="cy">Cyprus</option>
+                <option value="cz">Czech Republic</option>
+                <option value="dk">Denmark</option>
+                <option value="dj">Djibouti</option>
+                <option value="dm">Dominica</option>
+                <option value="do">Dominican Republic</option>
+                <option value="ec">Ecuador</option>
+                <option value="eg">Egypt</option>
+                <option value="sv">El Salvador</option>
+                <option value="gq">Equatorial Guinea</option>
+                <option value="er">Eritrea</option>
+                <option value="ee">Estonia</option>
+                <option value="et">Ethiopia</option>
+                <option value="fk">Falkland Islands (Malvinas)</option>
+                <option value="fo">Faroe Islands</option>
+                <option value="fj">Fiji</option>
+                <option value="fi">Finland</option>
+                <option value="fr">France</option>
+                <option value="gf">French Guiana</option>
+                <option value="pf">French Polynesia</option>
+                <option value="tf">French Southern Territories</option>
+                <option value="ga">Gabon</option>
+                <option value="gm">Gambia</option>
+                <option value="ge">Georgia</option>
+                <option value="de">Germany</option>
+                <option value="gh">Ghana</option>
+                <option value="gi">Gibraltar</option>
+                <option value="gr">Greece</option>
+                <option value="gl">Greenland</option>
+                <option value="gd">Grenada</option>
+                <option value="gp">Guadeloupe</option>
+                <option value="gu">Guam</option>
+                <option value="gt">Guatemala</option>
+                <option value="gg">Guernsey</option>
+                <option value="gn">Guinea</option>
+                <option value="gw">Guinea-bissau</option>
+                <option value="gy">Guyana</option>
+                <option value="ht">Haiti</option>
+                <option value="hm">Heard Island and Mcdonald Islands</option>
+                <option value="va">Holy See (Vatican City State)</option>
+                <option value="hn">Honduras</option>
+                <option value="hk">Hong Kong</option>
+                <option value="hu">Hungary</option>
+                <option value="is">Iceland</option>
+                <option value="in">India</option>
+                <option value="id">Indonesia</option>
+                <option value="ir">Iran, Islamic Republic of</option>
+                <option value="iq">Iraq</option>
+                <option value="ie">Ireland</option>
+                <option value="im">Isle of Man</option>
+                <option value="il">Israel</option>
+                <option value="it">Italy</option>
+                <option value="jm">Jamaica</option>
+                <option value="jp">Japan</option>
+                <option value="je">Jersey</option>
+                <option value="jo">Jordan</option>
+                <option value="kz">Kazakhstan</option>
+                <option value="ke">Kenya</option>
+                <option value="ki">Kiribati</option>
+                <option value="kp">Korea, Democratic People's Republic of</option>
+                <option value="kr">Korea, Republic of</option>
+                <option value="kw">Kuwait</option>
+                <option value="kg">Kyrgyzstan</option>
+                <option value="la">Lao People's Democratic Republic</option>
+                <option value="lv">Latvia</option>
+                <option value="lb">Lebanon</option>
+                <option value="ls">Lesotho</option>
+                <option value="lr">Liberia</option>
+                <option value="ly">Libyan Arab Jamahiriya</option>
+                <option value="li">Liechtenstein</option>
+                <option value="lt">Lithuania</option>
+                <option value="lu">Luxembourg</option>
+                <option value="mo">Macao</option>
+                <option value="mk">Macedonia, The Former Yugoslav Republic of</option>
+                <option value="mg">Madagascar</option>
+                <option value="mw">Malawi</option>
+                <option value="my">Malaysia</option>
+                <option value="mv">Maldives</option>
+                <option value="ml">Mali</option>
+                <option value="mt">Malta</option>
+                <option value="mh">Marshall Islands</option>
+                <option value="mq">Martinique</option>
+                <option value="mr">Mauritania</option>
+                <option value="mu">Mauritius</option>
+                <option value="yt">Mayotte</option>
+                <option value="mx">Mexico</option>
+                <option value="fm">Micronesia, Federated States of</option>
+                <option value="md">Moldova, Republic of</option>
+                <option value="mc">Monaco</option>
+                <option value="mn">Mongolia</option>
+                <option value="me">Montenegro</option>
+                <option value="ms">Montserrat</option>
+                <option value="ma">Morocco</option>
+                <option value="mz">Mozambique</option>
+                <option value="mm">Myanmar</option>
+                <option value="na">Namibia</option>
+                <option value="nr">Nauru</option>
+                <option value="np">Nepal</option>
+                <option value="nl">Netherlands</option>
+                <option value="an">Netherlands Antilles</option>
+                <option value="nc">New Caledonia</option>
+                <option value="nz">New Zealand</option>
+                <option value="ni">Nicaragua</option>
+                <option value="ne">Niger</option>
+                <option value="ng">Nigeria</option>
+                <option value="nu">Niue</option>
+                <option value="nf">Norfolk Island</option>
+                <option value="mp">Northern Mariana Islands</option>
+                <option value="no">Norway</option>
+                <option value="om">Oman</option>
+                <option value="pk">Pakistan</option>
+                <option value="pw">Palau</option>
+                <option value="ps">Palestinian Territory, Occupied</option>
+                <option value="pa">Panama</option>
+                <option value="pg">Papua New Guinea</option>
+                <option value="py">Paraguay</option>
+                <option value="pe">Peru</option>
+                <option value="ph">Philippines</option>
+                <option value="pn">Pitcairn</option>
+                <option value="pl">Poland</option>
+                <option value="pt">Portugal</option>
+                <option value="pr">Puerto Rico</option>
+                <option value="qa">Qatar</option>
+                <option value="re">Reunion</option>
+                <option value="ro">Romania</option>
+                <option value="ru">Russian Federation</option>
+                <option value="rw">Rwanda</option>
+                <option value="sh">Saint Helena</option>
+                <option value="kn">Saint Kitts and Nevis</option>
+                <option value="lc">Saint Lucia</option>
+                <option value="pm">Saint Pierre and Miquelon</option>
+                <option value="vc">Saint Vincent and The Grenadines</option>
+                <option value="ws">Samoa</option>
+                <option value="sm">San Marino</option>
+                <option value="st">Sao Tome and Principe</option>
+                <option value="sa">Saudi Arabia</option>
+                <option value="sn">Senegal</option>
+                <option value="rs">Serbia</option>
+                <option value="sc">Seychelles</option>
+                <option value="sl">Sierra Leone</option>
+                <option value="sg">Singapore</option>
+                <option value="sk">Slovakia</option>
+                <option value="si">Slovenia</option>
+                <option value="sb">Solomon Islands</option>
+                <option value="so">Somalia</option>
+                <option value="za">South Africa</option>
+                <option value="gs">South Georgia and The South Sandwich Islands</option>
+                <option value="es">Spain</option>
+                <option value="lk">Sri Lanka</option>
+                <option value="sd">Sudan</option>
+                <option value="sr">Suriname</option>
+                <option value="sj">Svalbard and Jan Mayen</option>
+                <option value="sz">Swaziland</option>
+                <option value="se">Sweden</option>
+                <option value="ch">Switzerland</option>
+                <option value="sy">Syrian Arab Republic</option>
+                <option value="tw">Taiwan, Province of China</option>
+                <option value="tj">Tajikistan</option>
+                <option value="tz">Tanzania, United Republic of</option>
+                <option value="th">Thailand</option>
+                <option value="tl">Timor-leste</option>
+                <option value="tg">Togo</option>
+                <option value="tk">Tokelau</option>
+                <option value="to">Tonga</option>
+                <option value="tt">Trinidad and Tobago</option>
+                <option value="tn">Tunisia</option>
+                <option value="tr">Turkey</option>
+                <option value="tm">Turkmenistan</option>
+                <option value="tc">Turks and Caicos Islands</option>
+                <option value="tv">Tuvalu</option>
+                <option value="ug">Uganda</option>
+                <option value="ua">Ukraine</option>
+                <option value="ae">United Arab Emirates</option>
+                <option value="gb">United Kingdom</option>
+                <option value="us">United States</option>
+                <option value="um">United States Minor Outlying Islands</option>
+                <option value="uy">Uruguay</option>
+                <option value="uz">Uzbekistan</option>
+                <option value="vu">Vanuatu</option>
+                <option value="ve">Venezuela</option>
+                <option value="vn">Viet Nam</option>
+                <option value="vg">Virgin Islands, British</option>
+                <option value="vi">Virgin Islands, U.S.</option>
+                <option value="wf">Wallis and Futuna</option>
+                <option value="eh">Western Sahara</option>
+                <option value="ye">Yemen</option>
+                <option value="zm">Zambia</option>
+                <option value="zw">Zimbabwe</option>
+            </select>
+            State, if in the United States:
+            <select name="state" id="6_state">
+                <option value="">-- Select --</option>
+                <option value="al">Alabama</option>
+                <option value="ak">Alaska</option>
+                <option value="az">Arizona</option>
+                <option value="ar">Arkansas</option>
+                <option value="ca">California</option>
+                <option value="co">Colorado</option>
+                <option value="ct">Connecticut</option>
+                <option value="de">Delaware</option>
+                <option value="dc">Dist of Columbia</option>
+                <option value="fl">Florida</option>
+                <option value="ga">Georgia</option>
+                <option value="hi">Hawaii</option>
+                <option value="id">Idaho</option>
+                <option value="il">Illinois</option>
+                <option value="in">Indiana</option>
+                <option value="ia">Iowa</option>
+                <option value="ks">Kansas</option>
+                <option value="ky">Kentucky</option>
+                <option value="la">Louisiana</option>
+                <option value="me">Maine</option>
+                <option value="md">Maryland</option>
+                <option value="ma">Massachusetts</option>
+                <option value="mi">Michigan</option>
+                <option value="mn">Minnesota</option>
+                <option value="ms">Mississippi</option>
+                <option value="mo">Missouri</option>
+                <option value="mt">Montana</option>
+                <option value="ne">Nebraska</option>
+                <option value="nv">Nevada</option>
+                <option value="nh">New Hampshire</option>
+                <option value="nj">New Jersey</option>
+                <option value="nm">New Mexico</option>
+                <option value="ny">New York</option>
+                <option value="nc">North Carolina</option>
+                <option value="nd">North Dakota</option>
+                <option value="oh">Ohio</option>
+                <option value="ok">Oklahoma</option>
+                <option value="or">Oregon</option>
+                <option value="pa">Pennsylvania</option>
+                <option value="ri">Rhode Island</option>
+                <option value="sc">South Carolina</option>
+                <option value="sd">South Dakota</option>
+                <option value="tn">Tennessee</option>
+                <option value="tx">Texas</option>
+                <option value="ut">Utah</option>
+                <option value="vt">Vermont</option>
+                <option value="va">Virginia</option>
+                <option value="wa">Washington</option>
+                <option value="wv">West Virginia</option>
+                <option value="wi">Wisconsin</option>
+                <option value="wy">Wyoming</option>
+            </select>
+        </dd>
+        <dt>How large is the city or town in which you make your primary residence?</dt>
+        <dd>
+            <div class="explain">This question explores how large a city furries live in, and helps with estimates of the fandom's size.</div>
+            <select name="location_size" id="6_location_size">
+                <option value="">-- Select --</option>
+                <option>&lt;1,000</option>
+                <option>1,000-4,999</option>
+                <option>5,000-9,999</option>
+                <option>10,000-19,999</option>
+                <option>20,000-49,999</option>
+                <option>50,000-99,999</option>
+                <option>100,000-499,999</option>
+                <option>500,000-999,999</option>
+                <option>&gt;1,000,000</option>
+            </select>
+        </dd>
+        <dt>What is your race?</dt>
+        <dd>
+            <div class="explain">
+                <p>This question is asked to understand the general racial background of the furry subculture.</p>
+                <p>Note: this question follows a structure similar to the US Census, and is intended to imply only broad racial categories.  Please feel free to be more specific in the provided space.</p>
+            </div>
+            <input type="checkbox" id="7_white" name="race" value="white" />
+            <label for="7_white">White</label><br />
+            <input type="checkbox" id="7_black" name="race" value="black" />
+            <label for="7_black">Black</label><br />
+            <input type="checkbox" id="7_asian" name="race" value="asian" />
+            <label for="7_asian">Asian</label><br />
+            <input type="checkbox" id="7_hispanic" name="race" value="hispanic" />
+            <label for="7_hispanic">Hispanic</label><br />
+            <input type="checkbox" id="7_native_american_pacific_islander" name="race" value="native_american_pacific_islander" />
+            <label for="7_native_american_pacific_islander">Native American/Pacific Islander</label><br />
+            <input type="checkbox" id="7_middle_eastern" name="race" value="middle_eastern" />
+            <label for="7_middle_eastern">Middle Eastern</label><br />
+            <input type="checkbox" id="7_other" name="race" value="other" />
+            <label for="7_other">Other</label><br />
+            Optionally, please specify:
+            <input type="text" name="race_other" disabled="disabled" />
+        </dd>
+        <dt>Please describe your spirituality.</dt>
+        <dd>
+            <div class="explain">This question is asked to see how furries identify spiritually.</div>
+            <input type="radio" id="8_christian_catholic" name="spirituality" value="christian_catholic" />
+            <label for="8_christian_catholic">Christian - Catholic</label><br />
+            <input type="radio" id="8_christian_orthodox" name="spirituality" value="christian_orthodox" />
+            <label for="8_christian_orthodox">Christian - Orthodox</label><br />
+            <input type="radio" id="8_christian_protestant" name="spirituality" value="christian_protestant" />
+            <label for="8_christian_protestant">Christian - Protestant</label><br />
+            <input type="radio" id="8_muslim" name="spirituality" value="muslim" />
+            <label for="8_muslim">Muslim</label><br />
+            <input type="radio" id="8_hindu" name="spirituality" value="hindu" />
+            <label for="8_hindu">Hindu</label><br />
+            <input type="radio" id="8_jewish" name="spirituality" value="jewish" />
+            <label for="8_jewish">Jewish</label><br />
+            <input type="radio" id="8_pagan" name="spirituality" value="pagan" />
+            <label for="8_pagan">Pagan</label><br />
+            <input type="radio" id="8_buddhist" name="spirituality" value="buddhist" />
+            <label for="8_buddhist">Buddhist</label><br />
+            <input type="radio" id="8_atheist" name="spirituality" value="atheist" />
+            <label for="8_atheist">Atheist</label><br />
+            <input type="radio" id="8_agnostic" name="spirituality" value="agnostic" />
+            <label for="8_agnostic">Agnostic</label><br />
+            <input type="radio" id="8_other" name="spirituality" value="other" />
+            <label for="8_other">Other</label><br />
+            Optionally, please specify:
+            <input type="text" name="spirituality_other" disabled="disabled" />
+        </dd>
+        <dt>Please describe your political views.</dt>
+        <dd>
+            <div class="explain">This question is used to estimate where most furries are on political matters.</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>More economic restrictions</th>
+                        <td><input type="radio" name="politics_economic" value="1" /></td>
+                        <td><input type="radio" name="politics_economic" value="2" /></td>
+                        <td><input type="radio" name="politics_economic" value="3" /></td>
+                        <td><input type="radio" name="politics_economic" value="4" /></td>
+                        <td><input type="radio" name="politics_economic" value="5" /></td>
+                        <td><input type="radio" name="politics_economic" value="6" /></td>
+                        <td><input type="radio" name="politics_economic" value="7" /></td>
+                        <td><input type="radio" name="politics_economic" value="8" /></td>
+                        <td><input type="radio" name="politics_economic" value="9" /></td>
+                        <td><input type="radio" name="politics_economic" value="10" /></td>
+                        <th>Fewer economic restrictions</th>
+                    </tr>
+                    <tr>
+                        <th>More social restrictions</th>
+                        <td><input type="radio" name="politics_social" value="1" /></td>
+                        <td><input type="radio" name="politics_social" value="2" /></td>
+                        <td><input type="radio" name="politics_social" value="3" /></td>
+                        <td><input type="radio" name="politics_social" value="4" /></td>
+                        <td><input type="radio" name="politics_social" value="5" /></td>
+                        <td><input type="radio" name="politics_social" value="6" /></td>
+                        <td><input type="radio" name="politics_social" value="7" /></td>
+                        <td><input type="radio" name="politics_social" value="8" /></td>
+                        <td><input type="radio" name="politics_social" value="9" /></td>
+                        <td><input type="radio" name="politics_social" value="10" /></td>
+                        <th>Fewer social restrictions</th>
+                    </tr>
+                </tbody>
+            </table>
+        </dd>
+        <dt>What is your occupation?</dt>
+        <dd>
+            <div class="explain">This question asks what your primary occupation is.  Select all that apply.</div>
+            <input type="checkbox" id="10_student" value="student" name="occupation" data-number="10" />
+            <label for="10_student">Student</label><br />
+            <input type="checkbox" id="10_administrative" value="administrative" name="occupation" data-number="10" />
+            <label for="10_administrative">Administrative</label><br />
+            <input type="checkbox" id="10_government_armed_service" value="government_armed_service" name="occupation" data-number="10" />
+            <label for="10_government_armed_service">Government/armed service</label><br />
+            <input type="checkbox" id="10_sales_support" value="sales_support" name="occupation" data-number="10" />
+            <label for="10_sales_support">Sales/Support</label><br />
+            <input type="checkbox" id="10_technical_it" value="technical_it" name="occupation" data-number="10" />
+            <label for="10_technical_it">Technical/IT</label><br />
+            <input type="checkbox" id="10_professional" value="professional" name="occupation" data-number="10" />
+            <label for="10_professional">Professional</label><br />
+            <input type="checkbox" id="10_service" value="service" name="occupation" data-number="10" />
+            <label for="10_service">Service</label><br />
+            <input type="checkbox" id="10_vet_animal_related" value="vet_animal_related" name="occupation" data-number="10" />
+            <label for="10_vet_animal_related">Veterinary/other animal related</label><br />
+            <input type="checkbox" id="10_creative_furry" value="creative_furry" name="occupation" data-number="10" />
+            <label for="10_creative_furry">Creative or other within the furry subculture</label><br />
+            <input type="checkbox" id="10_creative_nonfurry" value="creative_nonfurry" name="occupation" data-number="10" />
+            <label for="10_creative_nonfurry">Creative or other outside the furry subculture</label><br />
+            <input type="checkbox" id="10_retired" value="retired" name="occupation" data-number="10" />
+            <label for="10_retired">Retired</label><br />
+            <input type="checkbox" id="10_unemployed" value="unemployed" name="occupation" data-number="10" />
+            <label for="10_unemployed">Unemployed</label><br />
+            <input type="checkbox" id="10_other" value="other" name="occupation" data-number="10" />
+            <label for="10_other">Other</label><br />
+            Optionally, please specify:
+            <input type="text" name="occupation_other" disabled="disabled" />
+        </dd>
+        <dt>Please indicate your highest level of education.</dt>
+        <dd>
+            <div class="explain">This question is asked to understand the level of education attained by furries.</div>
+            <input type="radio" id="11_some_highschool" value="some_highschool" name="education" data-number="11" />
+            <label for="11_some_highschool">Some high school</label><br />
+            <input type="radio" id="11_ongoing_highschool" value="ongoing_highschool" name="education" data-number="11" />
+            <label for="11_ongoing_highschool">Ongoing high school</label><br />
+            <input type="radio" id="11_graduate_highschool" value="graduate_highschool" name="education" data-number="11" />
+            <label for="11_graduate_highschool">Graduated high school</label><br />
+            <input type="radio" id="11_some_university" value="some_university" name="education" data-number="11" />
+            <label for="11_some_university">Some university</label><br />
+            <input type="radio" id="11_ongoing_university" value="ongoing_university" name="education" data-number="11" />
+            <label for="11_ongoing_university">Ongoing university</label><br />
+            <input type="radio" id="11_graduate_university" value="graduate_university" name="education" data-number="11" />
+            <label for="11_graduate_university">Graduated university</label><br />
+            <input type="radio" id="11_ongoing_postcollege" value="ongoing_postcollege" name="education" data-number="11" />
+            <label for="11_ongoing_postcollege">Ongoing post-college education</label><br />
+            <input type="radio" id="11_graduate_postcollege" value="graduate_postcollege" name="education" data-number="11" />
+            <label for="11_graduate_postcollege">Graduated post-college</label><br />
+            <input type="radio" id="11_advanced_degree" value="advanced_degree" name="education" data-number="11" />
+            <label for="11_advanced_degree">Advanced degree</label><br />
+            <input type="radio" id="11_other" value="other" name="education" data-number="11" />
+            <label for="11_other">Other</label><br />
+            Optionally, please specify:
+            <input type="text" name="education_other" disabled="disabled" />
+        </dd>
+        <dt>What is your relationship status?</dt>
+        <dd>
+            <div class="explain">This question is asked to understand the relationships that furries enter.  If you are in multiple relationships, please enter for the primary or first relationship - there are options to select below for sexually open or polyamorous relationships.</div>
+            <input type="radio" id="12_single" value="single" data-number="12" />
+            <label for="12_single">Single</label><br />
+            <input type="radio" id="12_casual" value="casual" data-number="12" />
+            <label for="12_casual">Casual relationship</label><br />
+            <input type="radio" id="12_long_term_committed" value="long_term_committed" data-number="12" />
+            <label for="12_long_term_committed">Long-term committed relationship</label><br />
+            <input type="radio" id="12_legal_non_marriage" value="legal_non_marriage" data-number="12" />
+            <label for="12_legal_non_marriage">Civil union, domestic partnership, or other legally recognized (non-marriage) partnership</label><br />
+            <input type="radio" id="12_married" value="married" data-number="12" />
+            <label for="12_married">Married</label><br />
+            <br />
+            <input type="checkbox" name="partner_is_furry" id="12_partner_is_furry" />
+            <label for="12_partner_is_Furry">Partner is also a member of the furry subculture</label><br />
+            <input type="checkbox" name="long_distance_relationship" id="12_long_distance_relationship" />
+            <label for="12_long_distance_relationship">Long-distance relationship</label><br />
+            <input type="checkbox" name="open_relationship_romantic" id="12_open_relationship_romantic" />
+            <label for="12_open_relationship_romantic">Primary relationship is a romantically open or polyamorous relationship</label><br />
+            <input type="checkbox" name="open_relationship_sexual" id="12_open_relationship_sexual" />
+            <label for="12_open_relationship_sexual">Primary relationship is a sexually open relationship</label><br />
+        </dd>
+        <dt>How strongly do you consider the furry subculture to be a part of your life?</dt>
+        <dd>
+        </dd>
+        <dt>How long, in years, have you <em>known about</em> the furry subculture?</dt>
+        <dd>
+        </dd>
+        <dt>How long, in years, have you <em>considered yourself a member of</em> the furry subculture, if you consider yourself a furry?</dt>
+        <dd>
+        </dd>
+        <dt>If you consider yourself a furry, who knows that you are?</dt>
+        <dd>
+        </dd>
+        <dt>How do you think non-furries respond to your membership in the furry subculture?</dt>
+        <dd>
+        </dd>
+        <dt>If you consider yourself a furry, do people who know you are respond to you differently?</dt>
+        <dd>
+        </dd>
+        <dt>Would you characterize the perceptions held by non-furries you know of the furry subculture as:</dt>
+        <dd>
+        </dd>
+        <dt>How strongly do you consider yourself human?</dt>
+        <dd>
+        </dd>
+        <dt>If you are a furry, do you represent yourself in the furry subculture as other than your clinical sex (question 2), regardless of your gender identity (question 3)?</dt>
+        <dd>
+            <p>Optional: in addition, you may click anywhere in the diamond below to indicate both where you feel you fit on the gender spectrum, as well as how strongly you experience gender</p>
+            <div>GENDER WIDGET HERE</div>
+        </dd>
+        <dt>Activities within the subculture - if you are a furry, how often do you:</dt>
+        <dd>
+        </dd>
+        <dt>Regardless of your answers to the previous question, please describe your general feelings to the following on a scale from one to ten:</dt>
+        <dd>
+        </dd>
+        <dt>Activities outside the furry subculture - regardless of whether or not you are a furry, how often do you:</dt>
+        <dd>
+        </dd>
+        <dt>Would you describe yourself as:</dt>
+        <dd>
+        </dd>
+        <dt>On a scale from one to ten, how important do you think the following are to the furry subculture as a whole?</dt>
+        <dd>
+        </dd>
+        <dt>Which of the following conventions have you attended (or, if they are taking place in 2014, will you attend)?</dt>
+        <dd>
+        </dd>
+        <dt>Which of the following websites do you visit regularly, have an account on, or contribute to?</dt>
+        <dd>
+        </dd>
+        <dt>If you identify with a particular animal or have a particular furry persona, what species is it?</dt>
+        <dd>
         </dd>
     </dl>
     <input type="submit" name="submit" value="Continue to the psychographic battery" />

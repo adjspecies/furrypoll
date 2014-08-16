@@ -28,12 +28,12 @@ question_options = {
         'kinsey_5': { 'subjective': False },
         'kinsey_6': { 'subjective': False },
         'pansexual': { 'subjective': False },
-        'omnisexual': { 'subjective': False },
         'other': { 'subjective': True },
     },
     'race': {
         'white': { 'subjective': False },
         'black': { 'subjective': False },
+        'asian': { 'subjective': False },
         'hispanic': { 'subjective': False },
         'native_american_pacific_islander': { 'subjective': False },
         'middle_eastern': { 'subjective': False },
