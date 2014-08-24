@@ -600,35 +600,132 @@
             <input type="radio" id="12_married" value="married" data-number="12" />
             <label for="12_married">Married</label><br />
             <br />
-            <input type="checkbox" name="partner_is_furry" id="12_partner_is_furry" />
+            <input type="checkbox" name="partner_is_furry" id="12_partner_is_furry" data-number="12a" />
             <label for="12_partner_is_Furry">Partner is also a member of the furry subculture</label><br />
-            <input type="checkbox" name="long_distance_relationship" id="12_long_distance_relationship" />
+            <input type="checkbox" name="long_distance_relationship" id="12_long_distance_relationship" data-number="12b" />
             <label for="12_long_distance_relationship">Long-distance relationship</label><br />
-            <input type="checkbox" name="open_relationship_romantic" id="12_open_relationship_romantic" />
+            <input type="checkbox" name="open_relationship_romantic" id="12_open_relationship_romantic" data-number="12c" />
             <label for="12_open_relationship_romantic">Primary relationship is a romantically open or polyamorous relationship</label><br />
-            <input type="checkbox" name="open_relationship_sexual" id="12_open_relationship_sexual" />
+            <input type="checkbox" name="open_relationship_sexual" id="12_open_relationship_sexual" data-number="12d" />
             <label for="12_open_relationship_sexual">Primary relationship is a sexually open relationship</label><br />
         </dd>
         <dt>How strongly do you consider the furry subculture to be a part of your life?</dt>
         <dd>
+            <div class="explain">This question is used to estimate where most furries are on political matters.</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Not at all</th>
+                        <td><input type="radio" name="how_furry" value="1" data-number="13" /></td>
+                        <td><input type="radio" name="how_furry" value="2" data-number="13" /></td>
+                        <td><input type="radio" name="how_furry" value="3" data-number="13" /></td>
+                        <td><input type="radio" name="how_furry" value="4" data-number="13" /></td>
+                        <td><input type="radio" name="how_furry" value="5" data-number="13" /></td>
+                        <td><input type="radio" name="how_furry" value="6" data-number="13" /></td>
+                        <td><input type="radio" name="how_furry" value="7" data-number="13" /></td>
+                        <td><input type="radio" name="how_furry" value="8" data-number="13" /></td>
+                        <td><input type="radio" name="how_furry" value="9" data-number="13" /></td>
+                        <td><input type="radio" name="how_furry" value="10" data-number="13" /></td>
+                        <th>Very strongly</th>
+                    </tr>
+                </tbody>
+            </table>
         </dd>
         <dt>How long, in years, have you <em>known about</em> the furry subculture?</dt>
         <dd>
+            <label for="14_how_long_known">Please enter, using numbers only, how long you have known about the furry subculture</label>
+            <input type="number" min="0" max="100" step="0.5" name="how_long_known" id="14_how_long_known" data-number="14" />
         </dd>
         <dt>How long, in years, have you <em>considered yourself a member of</em> the furry subculture, if you consider yourself a furry?</dt>
         <dd>
+            <label for="15_how_long_known">Please enter, using numbers only, how long you have considered yourself a member of the furry subculture (leave blank if you do not consider yourself a member)</label>
+            <input type="number" min="0" max="100" step="0.5" name="how_long_member" id="15_how_long_member" data-number="15" />
         </dd>
         <dt>If you consider yourself a furry, who knows that you are?</dt>
         <dd>
+            <input type="checkbox" name="who_knows" id="16_who_knows_no_one" data-number="16" value="no_one" />
+            <label for="16_who_knows_no_one">No-one</label><br />
+            <input type="checkbox" name="who_knows" id="16_who_knows_immediate_family" data-number="16" value="immediate_family" />
+            <label for="16_who_knows_immediate_family">Immediate family</label><br />
+            <input type="checkbox" name="who_knows" id="16_who_knows_significant_other" data-number="16" value="significant_other" />
+            <label for="16_who_knows_significant_other">Significant other</label><br />
+            <input type="checkbox" name="who_knows" id="16_who_knows_furry_friends" data-number="16" value="furry_friends" />
+            <label for="16_who_knows_furry_friends">Furry friends or acquaintances</label><br />
+            <input type="checkbox" name="who_knows" id="16_who_knows_best_nofurry_friends" data-number="16" value="best_nonfurry_friends" />
+            <label for="16_who_knows_best_nonfurry_friends">Best non-furry friends</label><br />
+            <input type="checkbox" name="who_knows" id="16_who_knows_close_nonfurry_friends" data-number="16" value="close_nonfurry_friends" />
+            <label for="16_who_knows_close_nonfurry_friends">Closer non-furry friends</label><br />
+            <input type="checkbox" name="who_knows" id="16_who_knows_most_nonfurry_friends" data-number="16" value="most_nonfurry_friends" />
+            <label for="16_who_knows_most_nonfurry_friends">Most non-furry friends and acquaintances</label><br />
+            <input type="checkbox" name="who_knows" id="16_who_knows_coworkers" data-number="16" value="coworkers" />
+            <label for="16_who_knows_coworkers">Coworkers</label><br />
+            <input type="checkbox" name="who_knows" id="16_who_knows_common_knowledge" data-number="16" value="common_knowledge" />
+            <label for="16_who_knows_common_knowledge">It's common knowledge</label><br />
+            <input type="checkbox" name="who_knows" id="16_who_knows_not_applicable" data-number="16" value="not_applicable" />
+            <label for="16_who_knows_">Not applicable/I am not a furry</label>
         </dd>
         <dt>How do you think non-furries respond to your membership in the furry subculture?</dt>
         <dd>
+            <input type="radio" name="non_furries_general_response" id="17_non_furries_general_response_no_knowledge" data-number="17" value="no_knowledge" />
+            <label for="17_non_furries_general_response_no_knowledge">They have no knowledge</label><br />
+            <input type="radio" name="non_furries_general_response" id="17_non_furries_general_response_very_positive" data-number="17" value="very_positive" />
+            <label for="17_non_furries_general_response_very_positive">Very positively</label><br />
+            <input type="radio" name="non_furries_general_response" id="17_non_furries_general_response_posititve" data-number="17" value="positive" />
+            <label for="17_non_furries_general_response_positive">Positively</label><br />
+            <input type="radio" name="non_furries_general_response" id="17_non_furries_general_response_somewhat_positive" data-number="17" value="somewhat_positive" />
+            <label for="17_non_furries_general_response_somewhat_positive">Somewhat positively</label><br />
+            <input type="radio" name="non_furries_general_response" id="17_non_furries_general_response_ambivalent" data-number="17" value="ambivalent" />
+            <label for="17_non_furries_general_response_ambivalent">Ambivalently</label><br />
+            <input type="radio" name="non_furries_general_response" id="17_non_furries_general_response_somewhat_negative" data-number="17" value="somewhat_negative" />
+            <label for="17_non_furries_general_response_somewhat_negative">Somewhat negatively</label><br />
+            <input type="radio" name="non_furries_general_response" id="17_non_furries_general_response_negative" data-number="17" value="negative" />
+            <label for="17_non_furries_general_response_negative">Negatively</label><br />
+            <input type="radio" name="non_furries_general_response" id="17_non_furries_general_response_very_negative" data-number="17" value="very_negative" />
+            <label for="17_non_furries_general_response_very_negative">Very negatively</label><br />
+            <input type="radio" name="non_furries_general_response" id="17_non_furries_general_response_not_applicable" data-number="17" value="not_applicable" />
+            <label for="17_non_furries_general_response_not_applicable">Not applicable/I am not a furry</label><br />
         </dd>
         <dt>If you consider yourself a furry, do people who know you are respond to you differently?</dt>
         <dd>
+            <input type="radio" name="non_furries_personal_response" id="18_non_furries_personal_response_no_difference" data-number="18" value="no_diffierence" />
+            <label for="18_non_furries_personal_response_no_difference">No, they do not respond differently</label><br />
+            <input type="radio" name="non_furries_personal_response" id="18_non_furries_personal_response_positive" data-number="18" value="positive" />
+            <label for="18_non_furries_personal_response_positive">Yes, they respond more positively</label><br />
+            <input type="radio" name="non_furries_personal_response" id="18_non_furries_personal_response_negative" data-number="18" value="negative" />
+            <label for="18_non_furries_personal_response_negative">Yes, they respond more negatively</label><br />
+            <input type="radio" name="non_furries_personal_response" id="18_non_furries_personal_response_mixed" data-number="18" value="mixed" />
+            <label for="18_non_furries_personal_response_mixed">The reaction is mixed; some respond more positively, some respond more negatively, and some do not respond differently.</label><br />
+            <input type="radio" name="non_furries_personal_response" id="18_non_furries_personal_response_no_one_knows" data-number="18" value="no_one_knows" />
+            <label for="18_non_furries_personal_response_no_one_knows">People do not know that I am a furry</label><br />
+            <input type="radio" name="non_furries_personal_response" id="18_non_furries_personal_response_not_applicable" data-number="18" value="not_applicable" />
+            <label for="18_non_furries_personal_response_not_applicable">Not applicable/I am not a furry</label><br />
         </dd>
         <dt>Would you characterize the perceptions held by non-furries you know of the furry subculture as:</dt>
         <dd>
+            <input type="radio" name="non_furries_perception_accuracy" id="19_non_furries_perception_very_accurate" value="very_accurate" data-number="19" />
+            <label for="19_non_furries_perception_very_accurate">Very accurate</label><br />
+            <input type="radio" name="non_furries_perception_accuracy" id="19_non_furries_perception_accurate" value="accurate" data-number="19" />
+            <label for="19_non_furries_perception_accurate">Accurate</label><br />
+            <input type="radio" name="non_furries_perception_accuracy" id="19_non_furries_perception_inaccurate" value="inaccurate" data-number="19" />
+            <label for="19_non_furries_perception_inaccurate">Inaccurate</label><br />
+            <input type="radio" name="non_furries_perception_accuracy" id="19_non_furries_perception_very_inaccurate" value="very_inaccurate" data-number="19" />
+            <label for="19_non_furries_perception_very_inaccurate">Very inaccurate</label><br />
         </dd>
         <dt>How strongly do you consider yourself human?</dt>
         <dd>
