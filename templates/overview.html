@@ -678,7 +678,7 @@
             <input type="checkbox" name="who_knows" id="16_who_knows_common_knowledge" data-number="16" value="common_knowledge" />
             <label for="16_who_knows_common_knowledge">It's common knowledge</label><br />
             <input type="checkbox" name="who_knows" id="16_who_knows_not_applicable" data-number="16" value="not_applicable" />
-            <label for="16_who_knows_">Not applicable/I am not a furry</label>
+            <label for="16_who_knows_not_applicable">Not applicable/I am not a furry</label>
         </dd>
         <dt>How do you think non-furries respond to your membership in the furry subculture?</dt>
         <dd>
@@ -729,14 +729,70 @@
         </dd>
         <dt>How strongly do you consider yourself human?</dt>
         <dd>
+            <input type="radio" name="how_human" id="20_how_human_completely_human" value="completely_human" data-number="20" />
+            <label for="20_how_human_completely_human">I consider myself to be completely human, with no other attributes</label><br />
+            <input type="radio" name="how_human" id="20_how_human_completely_human_admire_aspects" value="completely_human_admire_aspects" data-number="20" />
+            <label for="20_how_human_completely_human_admire_aspects">I consider myself to be completely human, though I admire some attributes of another species</label><br />
+            <input type="radio" name="how_human" id="20_how_human_mostly_human" value="mostly_human" data-number="20" />
+            <label for="20_how_human_mostly_human">I consider myself to be mostly human, with some attributes of another species</label><br />
+            <input type="radio" name="how_human" id="20_how_human_both_human_and_other_species" value="both_human_and_other_species" data-number="20" />
+            <label for="20_how_human_both_human_and_other_species">I consider myself to be roughly equal parts human and another species</label><br />
+            <input type="radio" name="how_human" id="20_how_human_mostly_other_species" value="mostly_other_species" data-number="20" />
+            <label for="20_how_human_mostly_other_species">I consider myself to be partly human, though attributes from another species are more common</label><br />
+            <input type="radio" name="how_human" id="20_how_human_other_species" value="other_species" data-number="20" />
+            <label for="20_how_human_other_species">I do not consider myself human</label><br />
+            <input type="radio" name="how_human" id="20_how_human_other" value="other" data-number="20" />
+            <label for="20_how_human_other">Other</label><br />
+            Optionally, please specify:
+            <input type="text" name="how_human_other" disabled="disabled" />
         </dd>
         <dt>If you are a furry, do you represent yourself in the furry subculture as other than your clinical sex (question 2), regardless of your gender identity (question 3)?</dt>
         <dd>
+            <input type="radio" name="gender_in_furry" id="21_gender_in_furry_never" value="never" data-number="21" />
+            <label for="21_gender_in_furry_never">No, and I would not do so</label><br />
+            <input type="radio" name="gender_in_furry" id="21_gender_in_furry_might" value="might" data-number="21" />
+            <label for="21_gender_in_furry_might">No, but I might do so</label><br />
+            <input type="radio" name="gender_in_furry" id="21_gender_in_furry_sometimes" value="sometimes" data-number="21" />
+            <label for="21_gender_in_furry_sometimes">Yes, sometimes</label><br />
+            <input type="radio" name="gender_in_furry" id="21_gender_in_furry_regularly" value="regularly" data-number="21" />
+            <label for="21_gender_in_furry_regularly">Yes, regularly</label><br />
+            <input type="radio" name="gender_in_furry" id="21_gender_in_furry_always" value="always" data-number="21" />
+            <label for="21_gender_in_furry_always">My primary character or avatar fits this description</label><br />
+            <input type="radio" name="gender_in_furry" id="21_gender_in_furry_not_applicable" value="not_applicable" data-number="21" />
+            <label for="21_gender_in_furry_not_applicable">Not applicable</label><br />
             <p>Optional: in addition, you may click anywhere in the diamond below to indicate both where you feel you fit on the gender spectrum, as well as how strongly you experience gender</p>
             <div>GENDER WIDGET HERE</div>
         </dd>
         <dt>Activities within the subculture - if you are a furry, how often do you:</dt>
         <dd>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Never</th>
+                        <th>Less than once a year</th>
+                        <th>Yearly</th>
+                        <th>Several times a year</th>
+                        <th>Monthly</th>
+                        <th>Several times a month</th>
+                        <th>Weekly</th>
+                        <th>Daily</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Chat online with other furries</th>
+                        <td style="text-align: center"><input type="radio" name="furry_activities_chat_online" value="0" /></td>
+                        <td style="text-align: center"><input type="radio" name="furry_activities_chat_online" value="1" /></td>
+                        <td style="text-align: center"><input type="radio" name="furry_activities_chat_online" value="2" /></td>
+                        <td style="text-align: center"><input type="radio" name="furry_activities_chat_online" value="3" /></td>
+                        <td style="text-align: center"><input type="radio" name="furry_activities_chat_online" value="4" /></td>
+                        <td style="text-align: center"><input type="radio" name="furry_activities_chat_online" value="5" /></td>
+                        <td style="text-align: center"><input type="radio" name="furry_activities_chat_online" value="6" /></td>
+                        <td style="text-align: center"><input type="radio" name="furry_activities_chat_online" value="7" /></td>
+                    </tr>
+                </tbody>
+            </table>
         </dd>
         <dt>Regardless of your answers to the previous question, please describe your general feelings to the following on a scale from one to ten:</dt>
         <dd>
