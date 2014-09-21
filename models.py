@@ -86,6 +86,7 @@ class Overview(db.EmbeddedDocument):
     self_described = db.ListField(db.StringField(max_length=30))
     furry_importance = db.ListField(db.EmbeddedDocumentField('NumberPerOption'))
     conventions = db.ListField(db.StringField(max_length=30))
+    conventions_other = db.StringField(max_length=1000)
     furry_websites = db.ListField(db.EmbeddedDocumentField('StringPerOption'))
     characters = db.ListField(db.EmbeddedDocumentField('Character'))
 

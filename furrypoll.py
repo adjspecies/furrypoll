@@ -234,6 +234,13 @@ def _save_answers(form, section, survey):
                     'fws': 'furry_websites',
                 }[name]
                 survey.__getattribute__(section).__getattribute__(question_name).append(spo)
+            elif indicator == 'lst':
+                name = key[4:7]
+                question_name = {
+                    'con': 'conventions',
+                    'sds': 'self_described',
+                }[name]
+                survey.__getattribute__(section).__getattribute__(question_name).append(value)
             elif indicator == 'chr':
                 index = key[4:7]
                 species_category = form.pop('chr_{}_category'.format(index), '')
