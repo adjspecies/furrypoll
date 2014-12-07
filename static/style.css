@@ -1,0 +1,46 @@
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+/*
+Survey questions
+*/
+dl {
+    margin: 0 10%;
+}
+
+dt {
+    margin-top: 1.5em;
+    font-weight: bold;
+}
+
+.explain {
+    background-color: #eef;
+    font-size: 90%;
+}
+
+/*
+Tables
+*/
+thead th {
+    border-bottom: 1px dotted #aaa;
+    padding-bottom: 3px;
+}
+
+tbody td {
+    text-align: center;
+    padding: 5px;
+}
+
+tbody th {
+    text-align: right;
+    padding: 5px;
+}
+
+tr.odd td {
+    background-color: #eee;
+}
