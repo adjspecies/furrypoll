@@ -36,6 +36,8 @@ class GenderIdentityCoordinates(db.EmbeddedDocument):
 class Character(db.EmbeddedDocument):
     species_category = db.StringField(max_length=200)
     species_text = db.ListField(db.EmbeddedDocumentField('PotentiallySubjectiveResponse'))
+    primary_character = db.BooleanField()
+    deprecated_character = db.BooleanField()
     reason = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
     # Add year bounds (from when to when)
 
