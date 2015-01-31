@@ -73,14 +73,14 @@ def surveyQuestion(question_id):
     responses generally take place far too quickly.
     """
     if session.get('response_id', None) is None:
-        return '{error:"No session id"}'
+        return '{"error":"No session id"}'
     tp = models.Touchpoint(
         touchpoint_type=question_id
     )
     survey = models.Response.objects.get(id=session['response_id'])
     survey.metadata.touchpoints.append(tp)
     survey.save()
-    return '{error:null}'
+    return '{"error":null}'
 
 @app.route('/survey/overview/', methods=['GET', 'POST'])
 def surveyOverview():

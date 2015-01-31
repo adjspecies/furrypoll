@@ -600,13 +600,13 @@
             <input type="radio" id="12_married" value="married" data-number="12" />
             <label for="12_married">Married</label><br />
             <br />
-            <input type="checkbox" name="partner_is_furry" id="12_partner_is_furry" data-number="12a" />
+            <input type="checkbox" name="partner_is_furry" id="12_partner_is_furry" data-number="12" />
             <label for="12_partner_is_Furry">Partner is also a member of the furry subculture</label><br />
-            <input type="checkbox" name="long_distance_relationship" id="12_long_distance_relationship" data-number="12b" />
+            <input type="checkbox" name="long_distance_relationship" id="12_long_distance_relationship" data-number="12" />
             <label for="12_long_distance_relationship">Long-distance relationship</label><br />
-            <input type="checkbox" name="open_relationship_romantic" id="12_open_relationship_romantic" data-number="12c" />
+            <input type="checkbox" name="open_relationship_romantic" id="12_open_relationship_romantic" data-number="12" />
             <label for="12_open_relationship_romantic">Primary relationship is a romantically open or polyamorous relationship</label><br />
-            <input type="checkbox" name="open_relationship_sexual" id="12_open_relationship_sexual" data-number="12d" />
+            <input type="checkbox" name="open_relationship_sexual" id="12_open_relationship_sexual" data-number="12" />
             <label for="12_open_relationship_sexual">Primary relationship is a sexually open relationship</label><br />
         </dd>
         <dt>How strongly do you consider the furry subculture to be a part of your life?</dt>
@@ -2422,4 +2422,5 @@
     <input type="submit" name="complete" value="Complete the survey" />
     <input type="submit" name="cancel" value="Cancel your response" />
 </form>
+<script src="{{ url_for('static', filename='js/survey.js') }}"></script>
 {% endblock %}

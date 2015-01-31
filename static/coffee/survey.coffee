@@ -1,5 +1,5 @@
-markQuestionAnswered = () ->
-  $.getJSON "/touch/question/#{ @data.number }", (data) ->
+markQuestionAnswered = (number) ->
+  $.getJSON "/touch/question/#{ number }", (data) ->
     if data.error
       console.error(data.error)
 
@@ -7,11 +7,11 @@ unlockOnOther = (name, enabled) ->
   $("input[name=#{ name }_other]").prop('disabled', not enabled)
 
 $(document).ready ->
-  $('input,textarea').blur () ->
-    if @data('number')
-      markQuestionAnswered(@data('number'))
+  $('input,textarea').on 'blur', () ->
+    if $(@).data('number')
+      markQuestionAnswered($(@).data('number'))
 
-  $('input[value=other]').change () ->
-    unlockOnOther(@attr('name'), @prop('checked'))
+  $('input[value=other]').on 'change', () ->
+    unlockOnOther($(@).attr('name'), $(@).prop('checked'))
 
 
