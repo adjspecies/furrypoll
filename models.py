@@ -43,6 +43,7 @@ class Character(db.EmbeddedDocument):
 
 class Sexuality(db.EmbeddedDocument):
     sex_importance = db.ListField(db.EmbeddedDocumentField('NumberPerOption'))
+    dom_or_sub = db.ListField(db.EmbeddedDocumentField('StringPerOption'))
     interests = db.ListField(db.EmbeddedDocumentField('StringPerOption'))
     other_interests = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
 
@@ -57,6 +58,7 @@ class Overview(db.EmbeddedDocument):
     clinical_sex = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
     gender_identity = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
     gender_identity_coords = db.EmbeddedDocumentField('GenderIdentityCoordinates')
+    gender_expression_coords = db.EmbeddedDocumentField('GenderIdentityCoordinates')
     sexual_orientation = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
     country = db.StringField(max_length=2, default='xx')
     state = db.StringField(max_length=2, default='xx')
