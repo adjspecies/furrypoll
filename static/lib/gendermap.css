@@ -1,0 +1,59 @@
+.gendermap-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background: url(gendermap.png);
+}
+
+.gendermap-area {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    position: absolute;
+    height: 336px;
+    width: 336px;
+    top: 36px;
+    left: 123px;
+}
+
+.gendermap-marker {
+    display: none;
+    color: #CC00FF;
+    font-size: 30px;
+    position: absolute;
+    text-align: center;
+    line-height: 30px;
+    height: 30px;
+    width: 30px;
+    margin-top: -18px;
+    margin-left: -15px;
+}
+
+.gendermap-values {
+    overflow: auto;
+    zoom: 1;
+}
+
+.gendermap-value {
+    padding: 10px;
+    font-size: 120%;
+    float: left;
+    width: 280px;
+    text-align: center;
+}
+
+.gendermap-value.male {
+    color: #00C;
+}
+
+.gendermap-value.female {
+    color: #0A0;
+}
+
+.gendermap-value-text {
+    display: inline-block;
+    text-align: right;
+    width: 2.5em;
+}

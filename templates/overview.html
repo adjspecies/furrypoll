@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block additional_headers %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/gendermap.css') }}" />
+{% endblock %}
+
 {% block header %}Part 1 - Overview{% endblock %}
 {% block body %}
 <form method="post">
@@ -49,6 +53,12 @@
             <label for="3_other">Other</label><br />
             Optionally, please specify:
             <input type="text" name="clinical_sex_other" data-number="3" disabled="disabled" />
+            <p>Optional: in addition, you may click anywhere in the diamond below to indicate both where you feel you fit on the spectrum of gender <em>expression</em>, as well as how strongly you express that gender.</p>
+            <div id="gender-expression-coords"></div>
+            <input type="hidden" name="" id="gender-expression-coords--male" />
+            <input type="hidden" name="" id="gender-expression-coords--male-quantized" />
+            <input type="hidden" name="" id="gender-expression-coords--female" />
+            <input type="hidden" name="" id="gender-expression-coords--female-quantized" />
         </dd>
         <dt>What is your self-identified gender</dt>
         <dd>
@@ -73,8 +83,12 @@
             <label for="4_other">Other</label><br />
             Optionally, please specify:
             <input type="text" name="gender_identity_other" data-number="4" disabled="disabled" />
-            <p>Optional: in addition, you may click anywhere in the diamond below to indicate both where you feel you fit on the gender spectrum, as well as how strongly you experience gender</p>
-            <div>GENDER WIDGET HERE</div>
+            <p>Optional: in addition, you may click anywhere in the diamond below to indicate both where you feel you fit on the spectrum of gender identity, as well as how strongly you experience gender.</p>
+            <div id="gender-identity-coords"></div>
+            <input type="hidden" name="" id="gender-identity-coords--male" />
+            <input type="hidden" name="" id="gender-identity-coords--male-quantized" />
+            <input type="hidden" name="" id="gender-identity-coords--female" />
+            <input type="hidden" name="" id="gender-identity-coords--female-quantized" />
         </dd>
         <dt>What is your sexual orientation?</dt>
         <dd>
@@ -761,7 +775,11 @@
             <input type="radio" name="gender_in_furry" id="21_gender_in_furry_not_applicable" value="not_applicable" data-number="21" />
             <label for="21_gender_in_furry_not_applicable">Not applicable</label><br />
             <p>Optional: in addition, you may click anywhere in the diamond below to indicate both where you feel you fit on the gender spectrum, as well as how strongly you experience gender</p>
-            <div>GENDER WIDGET HERE</div>
+            <div id="gender-in-furry-coords"></div>
+            <input type="hidden" name="" id="gender-in-furry-coords--male" />
+            <input type="hidden" name="" id="gender-in-furry-coords--male-quantized" />
+            <input type="hidden" name="" id="gender-in-furry-coords--female" />
+            <input type="hidden" name="" id="gender-in-furry-coords--female-quantized" />
         </dd>
         <dt>Activities within the subculture - if you are a furry, how often do you:</dt>
         <dd>
@@ -2422,5 +2440,7 @@
     <input type="submit" name="complete" value="Complete the survey" />
     <input type="submit" name="cancel" value="Cancel your response" />
 </form>
+<script src="{{ url_for('static', filename='lib/gendermap.js') }}"></script>
 <script src="{{ url_for('static', filename='js/survey.js') }}"></script>
+<script src="{{ url_for('static', filename='js/overview.js') }}"></script>
 {% endblock %}

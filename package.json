@@ -1,0 +1,20 @@
+{
+  "name": "furrypoll",
+  "version": "1.0.0",
+  "description": "The Furry Poll - for managing node dependencies ONLY",
+  "main": "index.js",
+  "dependencies": {
+    "coffee": "^0.0.1",
+    "handlebars": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adjspecies/furrypoll.git"
+  },
+  "author": "Madison Scott-Clary",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adjspecies/furrypoll/issues"
+  },
+  "homepage": "https://github.com/adjspecies/furrypoll"
+}

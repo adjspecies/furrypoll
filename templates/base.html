@@ -3,6 +3,7 @@
         <title>The 2014 Furry Survey</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        {% block additional_headers %}{% endblock %}
     </head>
     <body>
         {% for message in get_flashed_messages() %}
