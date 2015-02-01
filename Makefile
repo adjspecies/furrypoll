@@ -9,6 +9,8 @@ coffee:
 flask-server:
 	python furrypoll.py
 
+# If you're interested in hacking, here's the default environment setup;
+# feel free to do the same thing with your own setup!
 .venv/bin/python:
 	virtualenv .venv
 
@@ -25,4 +27,4 @@ clean-all: clean
 	rm -rf .venv
 	rm -rf node_modules
 
-.PHONY: coffee deps devel flask-server
+.PHONY: clean clean-all coffee deps devel flask-server
