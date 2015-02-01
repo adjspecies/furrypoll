@@ -9,6 +9,9 @@ coffee:
 flask-server:
 	python furrypoll.py
 
+templates:
+	node_modules/handlebars/bin/handlebars -f static/js/templates.js static/templates/*
+
 # If you're interested in hacking, here's the default environment setup;
 # feel free to do the same thing with your own setup!
 .venv/bin/python:
