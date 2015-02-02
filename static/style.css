@@ -36,6 +36,11 @@ tbody td {
     padding: 5px;
 }
 
+.align-left td {
+    text-align: left;
+    vertical-align: top:
+}
+
 tbody th {
     text-align: right;
     padding: 5px;

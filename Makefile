@@ -30,4 +30,4 @@ clean-all: clean
 	rm -rf .venv
 	rm -rf node_modules
 
-.PHONY: clean clean-all coffee deps devel flask-server
+.PHONY: clean clean-all coffee deps devel flask-server templates

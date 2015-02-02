@@ -2,6 +2,7 @@
 
 {% block additional_headers %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/gendermap.css') }}" />
+<script src="{{ url_for('static', filename='lib/handlebars.runtime-v2.0.0.js') }}"></script>
 {% endblock %}
 
 {% block header %}Part 1 - Overview{% endblock %}
@@ -54,6 +55,9 @@
             Optionally, please specify:
             <input type="text" name="clinical_sex_other" data-number="3" disabled="disabled" />
             <p>Optional: in addition, you may click anywhere in the diamond below to indicate both where you feel you fit on the spectrum of gender <em>expression</em>, as well as how strongly you express that gender.</p>
+            <noscript>
+                <p>This section requires JavaScript to complete</p>
+            </noscript>
             <div id="gender-expression-coords"></div>
             <input type="hidden" name="" id="gender-expression-coords--male" />
             <input type="hidden" name="" id="gender-expression-coords--male-quantized" />
@@ -84,6 +88,9 @@
             Optionally, please specify:
             <input type="text" name="gender_identity_other" data-number="4" disabled="disabled" />
             <p>Optional: in addition, you may click anywhere in the diamond below to indicate both where you feel you fit on the spectrum of gender identity, as well as how strongly you experience gender.</p>
+            <noscript>
+                <p>This section requires JavaScript to complete</p>
+            </noscript>
             <div id="gender-identity-coords"></div>
             <input type="hidden" name="" id="gender-identity-coords--male" />
             <input type="hidden" name="" id="gender-identity-coords--male-quantized" />
@@ -775,6 +782,9 @@
             <input type="radio" name="gender_in_furry" id="21_gender_in_furry_not_applicable" value="not_applicable" data-number="21" />
             <label for="21_gender_in_furry_not_applicable">Not applicable</label><br />
             <p>Optional: in addition, you may click anywhere in the diamond below to indicate both where you feel you fit on the gender spectrum, as well as how strongly you experience gender</p>
+            <noscript>
+                <p>This section requires JavaScript to complete</p>
+            </noscript>
             <div id="gender-in-furry-coords"></div>
             <input type="hidden" name="" id="gender-in-furry-coords--male" />
             <input type="hidden" name="" id="gender-in-furry-coords--male-quantized" />
@@ -2434,6 +2444,12 @@
         </dd>
         <dt>If you identify with a particular animal or have a particular furry persona, what species is it?</dt>
         <dd>
+            <noscript>
+                <p>This section requires JavaScript to complete</p>
+            </noscript>
+            <div class="explain">This question asks about the personal with which you use to interact with the furry fandom, referred to here as your "character".  Please enter the details for your <em>primary character only</em> below; only check the species that applies to your primary character.  If you have additional characters, you may click the '+ Add Character' button below; only check the species that applies to that character.  Enter as much or as little information for as many or as few characters as you want!</div>
+            <div id="characters"></div>
+            <button onclick="addCharacter();return false">+ Add Character</button>
         </dd>
     </dl>
     <input type="submit" name="submit" value="Continue to the psychographic battery" />
@@ -2441,6 +2457,7 @@
     <input type="submit" name="cancel" value="Cancel your response" />
 </form>
 <script src="{{ url_for('static', filename='lib/gendermap.js') }}"></script>
+<script src="{{ url_for('static', filename='js/templates.js') }}"></script>
 <script src="{{ url_for('static', filename='js/survey.js') }}"></script>
 <script src="{{ url_for('static', filename='js/overview.js') }}"></script>
 {% endblock %}

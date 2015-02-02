@@ -19,3 +19,15 @@ $(document).ready ->
     $('#gender-in-furry-coords--male-quantized').val Math.ceil(mapData.m * 5)
     $('#gender-in-furry-coords--female').val mapData.f
     $('#gender-in-furry-coords--female-quantized').val Math.ceil(mapData.f * 5)
+
+  # Character species/reason questions.
+  currentCharacter = 1
+  window.addCharacter = () ->
+    $('#characters').append Handlebars.templates.character({
+      characterId: currentCharacter,
+      isFirst: currentCharacter is 1
+    })
+    currentCharacter++
+
+  window.addCharacter()
+    

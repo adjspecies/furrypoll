@@ -39,7 +39,6 @@ class Character(db.EmbeddedDocument):
     primary_character = db.BooleanField()
     deprecated_character = db.BooleanField()
     reason = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
-    # Add year bounds (from when to when)
 
 class Sexuality(db.EmbeddedDocument):
     sex_importance = db.ListField(db.EmbeddedDocumentField('NumberPerOption'))
