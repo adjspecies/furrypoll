@@ -46,6 +46,10 @@ tbody th {
     padding: 5px;
 }
 
+tbody .center th {
+    text-align: center;
+}
+
 tr.odd td {
     background-color: #eee;
 }

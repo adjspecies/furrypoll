@@ -34,15 +34,16 @@ class GenderIdentityCoordinates(db.EmbeddedDocument):
     female_quantized = db.IntField()
 
 class Character(db.EmbeddedDocument):
+    index = db.IntField()
     species_category = db.StringField(max_length=200)
-    species_text = db.ListField(db.EmbeddedDocumentField('PotentiallySubjectiveResponse'))
+    species_text = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
     primary_character = db.BooleanField()
     deprecated_character = db.BooleanField()
     reason = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
 
 class Sexuality(db.EmbeddedDocument):
     sex_importance = db.ListField(db.EmbeddedDocumentField('NumberPerOption'))
-    dom_or_sub = db.ListField(db.EmbeddedDocumentField('StringPerOption'))
+    dom_or_sub = db.ListField(db.EmbeddedDocumentField('NumberPerOption'))
     interests = db.ListField(db.EmbeddedDocumentField('StringPerOption'))
     other_interests = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
 

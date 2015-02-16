@@ -2,6 +2,9 @@
 
 {% block header %}Part 3 - Sexuality{% endblock %}
 {% block body %}
+<p class="progess">
+<strong>Start</strong> &raquo; <strong>Overview</strong> &raquo; <strong>Psychographic battery</strong> &raquo; <em>Sexuality</em> &raquo; Finish
+</p>
 <form method="post">
     <dl>
         <dt>The importance of sex</dt>
@@ -113,6 +116,308 @@
                     </tr>
                 </tbody>
             </table>
+        </dd>
+        <dt>Do you consider yourself dominant or submissive in...</dt>
+        <dd>
+            <h3>...sexual situations?</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Very<br />submissive</th>
+                        <th>Somewhat<br />submissive</th>
+                        <th>Neither dominant<br />nor submissive</th>
+                        <th>Somewhat<br />dominant</th>
+                        <th>Very<br />dominant</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="odd">
+                        <td><input type="radio" name="npo_dvs_sexual" value="-2" /></td>
+                        <td><input type="radio" name="npo_dvs_sexual" value="-1" /></td>
+                        <td><input type="radio" name="npo_dvs_sexual" value="0" /></td>
+                        <td><input type="radio" name="npo_dvs_sexual" value="1" /></td>
+                        <td><input type="radio" name="npo_dvs_sexual" value="2" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>...romantic situations?</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Very<br />submissive</th>
+                        <th>Somewhat<br />submissive</th>
+                        <th>Neither dominant<br />nor submissive</th>
+                        <th>Somewhat<br />dominant</th>
+                        <th>Very<br />dominant</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="odd">
+                        <td><input type="radio" name="npo_dvs_romantic" value="-2" /></td>
+                        <td><input type="radio" name="npo_dvs_romantic" value="-1" /></td>
+                        <td><input type="radio" name="npo_dvs_romantic" value="0" /></td>
+                        <td><input type="radio" name="npo_dvs_romantic" value="1" /></td>
+                        <td><input type="radio" name="npo_dvs_romantic" value="2" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>...social situations?</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Very<br />submissive</th>
+                        <th>Somewhat<br />submissive</th>
+                        <th>Neither dominant<br />nor submissive</th>
+                        <th>Somewhat<br />dominant</th>
+                        <th>Very<br />dominant</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="odd">
+                        <td><input type="radio" name="npo_dvs_social" value="-2" /></td>
+                        <td><input type="radio" name="npo_dvs_social" value="-1" /></td>
+                        <td><input type="radio" name="npo_dvs_social" value="0" /></td>
+                        <td><input type="radio" name="npo_dvs_social" value="1" /></td>
+                        <td><input type="radio" name="npo_dvs_social" value="2" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </dd>
+        <dt>Sexual interests</dt>
+        <dd>
+            <div class="explain">For each interest below, indicate what role it plays for you, checking all that apply.  Each interest should be taken on its own (not related to any other interest).  Feel free not to answer if an interest does not figure in your life.  This is not intended to be an exhaustive list, and a free-text field follows this list.</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>I consider myself<br />interested in this</th>
+                        <th>I consume media<br />related to this</th>
+                        <th>I create media<br />related to this</th>
+                        <th>I participate in this<br />online in roleplay</th>
+                        <th>I participate in this<br />offline in person</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="odd">
+                        <th>Furry</th>
+                        <td><input type="checkbox" name="spo_int_furry" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_furry" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_furry" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_furry" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_furry" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Zoophilia</th>
+                        <td><input type="checkbox" name="spo_int_zoophilia" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_zoophilia" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_zoophilia" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_zoophilia" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_zoophilia" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Plushophilia</th>
+                        <td><input type="checkbox" name="spo_int_plushophilia" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_plushophilia" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_plushophilia" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_plushophilia" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_plushophilia" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Transformation</th>
+                        <td><input type="checkbox" name="spo_int_transformation" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_transformation" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_transformation" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_transformation" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_transformation" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Age play</th>
+                        <td><input type="checkbox" name="spo_int_ageplay" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_ageplay" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_ageplay" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_ageplay" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_ageplay" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Babyfur</th>
+                        <td><input type="checkbox" name="spo_int_babyfur" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_babyfur" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_babyfur" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_babyfur" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_babyfur" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Diapers</th>
+                        <td><input type="checkbox" name="spo_int_diapers" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_diapers" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_diapers" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_diapers" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_diapers" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Consensual non-consent</th>
+                        <td><input type="checkbox" name="spo_int_noncon" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_noncon" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_noncon" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_noncon" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_noncon" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Bondage</th>
+                        <td><input type="checkbox" name="spo_int_bondage" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_bondage" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_bondage" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_bondage" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_bondage" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Domination/submission</th>
+                        <td><input type="checkbox" name="spo_int_domination" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_domination" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_domination" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_domination" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_domination" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Sadism</th>
+                        <td><input type="checkbox" name="spo_int_sadism" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_sadism" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_sadism" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_sadism" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_sadism" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Masochism</th>
+                        <td><input type="checkbox" name="spo_int_masochism" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_masochism" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_masochism" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_masochism" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_masochism" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Fursuits</th>
+                        <td><input type="checkbox" name="spo_int_fursuits" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_fursuits" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_fursuits" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_fursuits" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_fursuits" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Fertility/impregnation</th>
+                        <td><input type="checkbox" name="spo_int_fertility_impregnation" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_fertility_impregnation" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_fertility_impregnation" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_fertility_impregnation" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_fertility_impregnation" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Gender role play</th>
+                        <td><input type="checkbox" name="spo_int_gender_role_play" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_gender_role_play" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_gender_role_play" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_gender_role_play" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_gender_role_play" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Gender presentation play/crossdressing</th>
+                        <td><input type="checkbox" name="spo_int_gender_presentation_play" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_gender_presentation_play" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_gender_presentation_play" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_gender_presentation_play" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_gender_presentation_play" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Humiliation</th>
+                        <td><input type="checkbox" name="spo_int_humiliation" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_humiliation" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_humiliation" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_humiliation" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_humiliation" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Vore</th>
+                        <td><input type="checkbox" name="spo_int_vore" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_vore" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_vore" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_vore" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_vore" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Orgasm control (denial, forced orgasm)</th>
+                        <td><input type="checkbox" name="spo_int_orgasm_control" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_orgasm_control" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_orgasm_control" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_orgasm_control" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_orgasm_control" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Exhibitionism</th>
+                        <td><input type="checkbox" name="spo_int_exhibitionism" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_exhibitionism" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_exhibitionism" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_exhibitionism" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_exhibitionism" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Voyeurism</th>
+                        <td><input type="checkbox" name="spo_int_voyeurism" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_voyeurism" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_voyeurism" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_voyeurism" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_voyeurism" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Foot/paw worship</th>
+                        <td><input type="checkbox" name="spo_int_foot_worship" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_foot_worship" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_foot_worship" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_foot_worship" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_foot_worship" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Magic</th>
+                        <td><input type="checkbox" name="spo_int_magic" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_magic" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_magic" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_magic" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_magic" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Watersports</th>
+                        <td><input type="checkbox" name="spo_int_watersports" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_watersports" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_watersports" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_watersports" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_watersports" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Scat</th>
+                        <td><input type="checkbox" name="spo_int_scat" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_scat" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_scat" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_scat" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_scat" value="participate_inperson" /></td>
+                    </tr>
+                    <tr>
+                        <th>Size-play (macro or micro)</th>
+                        <td><input type="checkbox" name="spo_int_size_play" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_size_play" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_size_play" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_size_play" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_size_play" value="participate_inperson" /></td>
+                    </tr>
+                    <tr class="odd">
+                        <th>Inflation</th>
+                        <td><input type="checkbox" name="spo_int_inflation" value="interested" /></td>
+                        <td><input type="checkbox" name="spo_int_inflation" value="consume_media" /></td>
+                        <td><input type="checkbox" name="spo_int_inflation" value="create_media" /></td>
+                        <td><input type="checkbox" name="spo_int_inflation" value="participate_online" /></td>
+                        <td><input type="checkbox" name="spo_int_inflation" value="participate_inperson" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Other interests:</h3>
+            <textarea name="other_interests"></textarea>
         </dd>
     </dl>
     <input type="submit" name="complete" value="Complete the survey" />

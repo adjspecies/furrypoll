@@ -183,8 +183,8 @@ def surveyCancel():
 
 def _save_answers(form, section, survey):
     for key in form.to_dict():
-        value = form.get(key, None)
-        if value is None:
+        value = form.get(key, '')
+        if value == '':
             continue
         if key in questions.question_options:
             if value == 'other':
@@ -222,6 +222,7 @@ def _save_answers(form, section, survey):
                     'fao': 'furry_activities_opinion',
                     'nfa': 'non_furry_activities',
                     'imp': 'furry_importance',
+                    'sim': 'sex_importance',
                 }[name]
                 survey.__getattribute__(section).__getattribute__(question_name).append(npo)
             elif indicator == 'spo':
@@ -232,6 +233,7 @@ def _save_answers(form, section, survey):
                 )
                 question_name = {
                     'fws': 'furry_websites',
+                    'int': 'interests',
                 }[name]
                 survey.__getattribute__(section).__getattribute__(question_name).append(spo)
             elif indicator == 'lst':
@@ -242,11 +244,12 @@ def _save_answers(form, section, survey):
                 }[name]
                 survey.__getattribute__(section).__getattribute__(question_name).append(value)
             elif indicator == 'chr':
-                index = key[4:7]
-                species_category = form.pop('chr_{}_category'.format(index), '')
-                species_text = form.pop('chr_{}_species'.format(index), species_category)
-                reason = form.pop('chr_{}_reason'.format(index), '')
+                index = key.split('_')[1]
+                species_category = form.get('chr_{}_category'.format(index), '')
+                species_text = form.get('chr_{}_species'.format(index), species_category)
+                reason = form.get('chr_{}_reason'.format(index), '')
                 character = models.Character(
+                    index=index,
                     species_category=species_category,
                     species_text=models.PotentiallySubjectiveResponse(
                         subjective=True,
