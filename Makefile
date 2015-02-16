@@ -9,7 +9,7 @@ flask-server:
 	python furrypoll.py
 
 coffee: $(NODE_TARGETS)
-	node_modules/coffee-script/bin/coffee -o static/js -cw static/coffee&
+	node_modules/coffee-script/bin/coffee -o static/js -cw static/coffee
 
 coffee-build: $(NODE_TARGETS)
 	node_modules/coffee-script/bin/coffee -o static/js -c static/coffee
