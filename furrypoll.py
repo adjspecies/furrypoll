@@ -120,6 +120,7 @@ def surveyPsychographic():
         if request.form.get('cancel', None) is not None:
             survey.save()
             return redirect('/survey/cancel/')
+        survey.psychographic_battery = models.PsychographicBattery()
         _save_answers(request.form, 'psychographic_battery', survey)
         survey.save()
         if request.form.get('complete', None) is not None:
@@ -143,6 +144,7 @@ def surveySexuality():
         if request.form.get('cancel', None) is not None:
             survey.save()
             return redirect('/survey/cancel/')
+        survey.sexuality = models.Sexuality()
         _save_answers(request.form, 'sexuality', survey)
         survey.save()
         return redirect('/survey/complete/')
@@ -222,7 +224,9 @@ def _save_answers(form, section, survey):
                     'fao': 'furry_activities_opinion',
                     'nfa': 'non_furry_activities',
                     'imp': 'furry_importance',
+                    'bat': 'battery',
                     'sim': 'sex_importance',
+                    'dvs': 'dom_or_sub',
                 }[name]
                 survey.__getattribute__(section).__getattribute__(question_name).append(npo)
             elif indicator == 'spo':
@@ -233,9 +237,18 @@ def _save_answers(form, section, survey):
                 )
                 question_name = {
                     'fws': 'furry_websites',
-                    'int': 'interests',
                 }[name]
                 survey.__getattribute__(section).__getattribute__(question_name).append(spo)
+            elif indicator == 'lpo':
+                name = key[4:7]
+                lpo = models.ListPerOption(
+                    option=key[8:],
+                    value=form.getlist(key)
+                )
+                question_name = {
+                    'int': 'interests',
+                }[name]
+                survey.__getattribute__(section).__getattribute__(question_name).append(lpo)
             elif indicator == 'lst':
                 name = key[4:7]
                 question_name = {

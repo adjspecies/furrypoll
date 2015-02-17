@@ -1,4 +1,5 @@
 $(document).ready ->
+  # Gender widgets.
   $('#gender-identity-coords').gendermap().on 'mapClick', () ->
     mapData = $(@).data 'gendermap'
     $('#gender-identity-coords--male').val mapData.m

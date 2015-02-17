@@ -23,6 +23,10 @@ class StringPerOption(db.EmbeddedDocument):
     option = db.StringField(max_length=30)
     value = db.StringField(max_length=30)
 
+class ListPerOption(db.EmbeddedDocument):
+    option = db.StringField(max_length=30)
+    value = db.ListField(db.StringField(max_length=30))
+
 class PotentiallySubjectiveResponse(db.EmbeddedDocument):
     subjective = db.BooleanField()
     value = db.StringField(max_length=2000)
@@ -41,10 +45,13 @@ class Character(db.EmbeddedDocument):
     deprecated_character = db.BooleanField()
     reason = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
 
+class PsychographicBattery(db.EmbeddedDocument):
+    battery = db.ListField(db.EmbeddedDocumentField('NumberPerOption'))
+
 class Sexuality(db.EmbeddedDocument):
     sex_importance = db.ListField(db.EmbeddedDocumentField('NumberPerOption'))
     dom_or_sub = db.ListField(db.EmbeddedDocumentField('NumberPerOption'))
-    interests = db.ListField(db.EmbeddedDocumentField('StringPerOption'))
+    interests = db.ListField(db.EmbeddedDocumentField('ListPerOption'))
     other_interests = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
 
 class ResponseMetadata(db.EmbeddedDocument):
@@ -97,11 +104,10 @@ class Overview(db.EmbeddedDocument):
 class Response(db.Document):
     # survey_id = db.StringField(max_length=255, required=True)
     overview = db.EmbeddedDocumentField('Overview')
-    psychographic_battery = db.ListField(db.EmbeddedDocumentField('NumberPerOption'))
+    psychographic_battery = db.EmbeddedDocumentField('PsychographicBattery')
     sexuality = db.EmbeddedDocumentField('Sexuality')
     metadata = db.EmbeddedDocumentField('ResponseMetadata')
 
     meta = {
-        'allow_inheritance': True,
         'collection': 'responses'
     }
