@@ -17,7 +17,7 @@ import models
 import questions
 
 app = Flask(__name__)
-app.config["MONGODB_SETTINGS"] = {'DB': 'furrypoll_2014'}
+app.config["MONGODB_SETTINGS"] = {'DB': 'furrypoll_2015'}
 app.config["SECRET_KEY"] = os.urandom(12)
 app.config["DEBUG"] = True
 app.config['SURVEY_ACTIVE'] = True
