@@ -2,9 +2,16 @@
 
 {% block header %}Beginning the Survey{% endblock %}
 {% block body %}
-<p class="progess">
+<p class="muted">
 <em>Start</em> &raquo; Overview &raquo; Psychographic battery &raquo; Sexuality &raquo; Finish
 </p>
-Your survey ID is {{ survey_id }}
-<a href="/survey/overview">Start the survey</a>
+<p>Welcome to the Furry Survey!  Your survey ID is {{ survey_id }}.</p>
+<p>Responses to the Furry Survey are considered anonymous and subjective or potentially identifying information will not be released or published.  If you are curious about the results of the survey, they will be shared in aggregates on <a href="http://adjectivespecies.com" target="_blank">[adjective][species]</a> as articles, charts, and visualizations.  If you have any questions about the survey, the results, or your participation, you can contact us by <a href="mailto:surveys@adjectivespecies.com">e-mail</a> and we will get back to you as soon as possible!</p>
+<form method="post">
+    <input type="text" name="hp_field" style="display:none;visibility:hidden" />
+    Simple question to begin the survey:
+    <label>{{ add_a }} + {{ add_b }} = <input type="text" name="result" /></label>
+    <button class="btn btn-primary">Start the survey!</button>
+</form>
+    
 {% endblock %}

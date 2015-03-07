@@ -1,15 +1,40 @@
 <html>
     <head>
         <title>The 2014 Furry Survey</title>
+        <link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/bootstrap/css/bootstrap.min.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         {% block additional_headers %}{% endblock %}
     </head>
     <body>
-        {% for message in get_flashed_messages() %}
-            <div class="message">{{ message|safe }}</div>
-        {% endfor %}
-        <h1>{% block header %}{% endblock %}</h1>
-        {% block body %}{% endblock %}
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href="http://adjectivespecies.com">[adjective][species]</a>
+                    <ul class="nav">
+                        <li><a href="http://furrypoll.com">2013 Furry Poll</a></li>
+                        <li><a href="http://survey.adjectivespecies.com">Surveys</a></li>
+                        <li><a href="http://vis.adjectivespecies.com">Visualizations</a></li>
+                        <li><a href="http://twitter.com/adjspecies">Twitter</a></li>
+                        <li><a href="https://weasyl.com/~adjspecies">Weasyl</a></li>
+                        <li><a href="https://plus.google.com/112736664779432876558?prsrc=3">Google+</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <header>
+            <div>
+                <h1><a href="/">The Furry Poll</a></h1>
+                An <a href="http://adjectivespecies.com" target="_blank">[adjective][species]</a> project
+            </div>
+        </header>
+        <article>
+            <h2>{% block header %}{% endblock %}</h2>
+            {% for message in get_flashed_messages() %}
+                <blockquote>{{ message|safe }}</blockquote>
+            {% endfor %}
+            {% block body %}{% endblock %}
+        </article>
     </body>
 </html>

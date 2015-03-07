@@ -2,15 +2,15 @@
 
 {% block header %}Part 3 - Sexuality{% endblock %}
 {% block body %}
-<p class="progess">
+<p class="muted">
 <strong>Start</strong> &raquo; <strong>Overview</strong> &raquo; <strong>Psychographic battery</strong> &raquo; <em>Sexuality</em> &raquo; Finish
 </p>
 <form method="post">
+    <h3>The importance of sex</h3>
     <dl>
-        <dt>The importance of sex</dt>
+        <dt>How important is sex to you, within the context of the furry fandom?</dt>
         <dd>
-            <h3>How important is sex to you, within the context of the furry fandom?</h3>
-            <div class="explain">Leave blank if you are not a furry</div>
+            <blockquote>Leave blank if you are not a furry</blockquote>
             <table>
                 <thead>
                     <tr>
@@ -45,8 +45,10 @@
                     </tr>
                 </tbody>
             </table>
-            <h3>How important is sex to other furries, within the context of the furry fandom?</h3>
-            <div class="explain">Leave blank if you are not a furry</div>
+        </dd>
+        <dt>How important is sex to other furries, within the context of the furry fandom?</dt>
+        <dd>
+            <blockquote>Leave blank if you are not a furry</blockquote>
             <table>
                 <thead>
                     <tr>
@@ -81,8 +83,10 @@
                     </tr>
                 </tbody>
             </table>
-            <h3>How important do you think the public thinks sex is to the furry fandom?</h3>
-            <div class="explain">Leave blank if you are not a furry</div>
+        </dd>
+        <dt>How important do you think the public thinks sex is to the furry fandom?</dt>
+        <dd>
+            <blockquote>Leave blank if you are not a furry</blockquote>
             <table>
                 <thead>
                     <tr>
@@ -117,9 +121,11 @@
                 </tbody>
             </table>
         </dd>
-        <dt>Do you consider yourself dominant or submissive in...</dt>
+    </dl>
+    <h3>Do you consider yourself dominant or submissive in...</h3>
+    <dl>
+        <dt>...sexual situations?</dt>
         <dd>
-            <h3>...sexual situations?</h3>
             <table>
                 <thead>
                     <tr>
@@ -140,7 +146,9 @@
                     </tr>
                 </tbody>
             </table>
-            <h3>...romantic situations?</h3>
+        </dd>
+        <dt>...romantic situations?</dt>
+        <dd>
             <table>
                 <thead>
                     <tr>
@@ -161,7 +169,9 @@
                     </tr>
                 </tbody>
             </table>
-            <h3>...social situations?</h3>
+        </dd>
+        <dt>...social situations?</dt>
+        <dd>
             <table>
                 <thead>
                     <tr>
@@ -183,9 +193,12 @@
                 </tbody>
             </table>
         </dd>
-        <dt>Sexual interests</dt>
+    </dl>
+    <h3>Sexual interests</h3>
+    <dl>
+        <dt>How would you describe your sexual interests?</dt>
         <dd>
-            <div class="explain">For each interest below, indicate what role it plays for you, checking all that apply.  Each interest should be taken on its own (not related to any other interest).  Feel free not to answer if an interest does not figure in your life.  This is not intended to be an exhaustive list, and a free-text field follows this list.</div>
+            <blockquote>For each interest below, indicate what role it plays for you, checking all that apply.  Each interest should be taken on its own (not related to any other interest).  Feel free not to answer if an interest does not figure in your life.  This is not intended to be an exhaustive list, and a free-text field follows this list.</blockquote>
             <table>
                 <thead>
                     <tr>
@@ -364,7 +377,7 @@
             <textarea name="other_interests"></textarea>
         </dd>
     </dl>
-    <input type="submit" name="complete" value="Complete the survey" />
-    <input type="submit" name="cancel" value="Cancel your response" />
+    <input type="submit" name="complete" value="Complete the survey" class="btn btn-primary" />
+    <input type="submit" name="cancel" value="Cancel your response" class="btn btn-danger" />
 </form>
 {% endblock %}

@@ -11,6 +11,7 @@ from flask.ext.mongoengine import MongoEngine
 
 import datetime
 import os
+import random
 
 import models
 import questions
@@ -34,13 +35,20 @@ def before_request():
 def front():
     return render_template('front.html')
 
-@app.route('/survey/start/')
+@app.route('/survey/start/', methods=['GET', 'POST'])
 def surveyStart():
     """Begin a survey
 
     This view creates a response object if none exists and provides the user
     with some additional information about the survey.
     """
+    if request.method == 'POST':
+        if int(request.form.get('result', None)) == session.get('add_a', 0) + \
+                session.get('add_b', 0) and request.form.get('hp_field', '') == '':
+            return redirect('/survey/overview/')
+        else:
+            flash('''Please ensure that you have answered the simple question
+            below to start the survey!''')
     if session.get('response_id', None) is not None:
         survey = models.Response.objects.get(id=session['response_id'])
     else:
@@ -62,7 +70,11 @@ def surveyStart():
             to continue; otherwise, please <a href="/survey/cancel">cancel
             the survey</a> if you have already completed it.''')
             survey.metadata.touchpoints.append(models.Touchpoint(touchpoint_type=-6))
-    return render_template('start.html', survey_id=str(survey.id))
+    add_a = random.randint(1, 20)
+    add_b = random.randint(1, 20)
+    session['add_a'] = add_a
+    session['add_b'] = add_b
+    return render_template('start.html', survey_id=str(survey.id), add_a=add_a, add_b=add_b)
 
 @app.route('/touch/question/<int:question_id>')
 def surveyQuestion(question_id):
@@ -157,17 +169,18 @@ def surveySexuality():
 @app.route('/survey/complete/', methods=['GET', 'POST'])
 def surveyComplete():
     """Mark a survey as complete"""
-    survey = models.Response.objects.get(id=session['response_id'])
-    if -4 not in [tp.touchpoint_type for tp in survey.metadata.touchpoints]:
-        flash("Survey complete! Thank you!")
-        tp = models.Touchpoint(
-            touchpoint_type=-4
-        )
-        survey.metadata.touchpoints.append(tp)
-        survey.save()
-    else:
-        flash("Survey is already marked as complete!")
-    session['response_id'] = None
+    if session.get('response_id') is not None:
+        survey = models.Response.objects.get(id=session['response_id'])
+        if -4 not in [tp.touchpoint_type for tp in survey.metadata.touchpoints]:
+            flash("Survey complete! Thank you!")
+            tp = models.Touchpoint(
+                touchpoint_type=-4
+            )
+            survey.metadata.touchpoints.append(tp)
+            survey.save()
+        else:
+            flash("Survey is already marked as complete!")
+        session['response_id'] = None
     return render_template('complete.html')
 
 @app.route('/survey/cancel/', methods=['GET', 'POST'])

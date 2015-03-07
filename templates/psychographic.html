@@ -2,14 +2,14 @@
 
 {% block header %}Part 2 - Psychographic Battery{% endblock %}
 {% block body %}
-<p class="progess">
+<p class="muted">
 <strong>Start</strong> &raquo; <strong>Overview</strong> &raquo; <em>Psychographic battery</em> &raquo; Sexuality &raquo; Finish
 </p>
 <form method="post">
     <dl>
         <dt>Psychographic battery</dt>
         <dd>
-            <div class="explain">Explanation</div>
+            <blockquote>The psychographic battery is a type of personality test that tells us a little bit more about you as a person and how you interface with the world around you.</blockquote>
             <table>
                 <thead>
                     <tr>
@@ -468,8 +468,8 @@
             </table>
         </dd>
     </dl>
-    <input type="submit" name="submit" value="Continue to sexuality" />
-    <input type="submit" name="complete" value="Complete the survey" />
-    <input type="submit" name="cancel" value="Cancel your response" />
+    <input type="submit" name="submit" value="Continue to sexuality" class="btn btn-primary" />
+    <input type="submit" name="complete" value="Complete the survey" class="btn" />
+    <input type="submit" name="cancel" value="Cancel your response" class="btn btn-danger" />
 </form>
 {% endblock %}

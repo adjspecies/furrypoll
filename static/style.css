@@ -1,3 +1,54 @@
+body {
+    font-family: serif;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+header {
+    width: 100%;
+    height: 288px;
+    background: url(as-stripes.png);
+    font-family: 'Orbitron', cursive !important;
+    font-weight: 400;
+    font-style: normal;
+    color: #fff;
+    margin-top: 0;
+}
+
+header div {
+    margin: auto;
+    padding-top: 150px;
+    width: 960px;
+}
+
+header h1 {
+    font-size: 50px !important;
+    font-family: inherit;
+    color: inherit;
+}
+
+header a,
+header a:active,
+header a:hover,
+header a:visited {
+    color: inherit;
+    font-family: inherit;
+    text-decoration: none;
+}
+
+article {
+    padding: 1em;
+}
+
+@media screen and (min-width: 960px) {
+    article {
+        width: 80%;
+        margin: auto;
+    }
+}
+
 .left {
     text-align: left;
 }
@@ -10,12 +61,13 @@
 Survey questions
 */
 dl {
-    margin: 0 10%;
+    margin: 1em 10%;
 }
 
 dt {
     margin-top: 1.5em;
     font-weight: bold;
+    font-size: 125%;
 }
 
 .explain {
