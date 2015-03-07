@@ -16,15 +16,15 @@ class Touchpoint(db.EmbeddedDocument):
     timestamp = db.DateTimeField(default=datetime.datetime.now, required=True)
 
 class NumberPerOption(db.EmbeddedDocument):
-    option = db.StringField(max_length=30)
+    option = db.StringField(max_length=50)
     value = db.IntField()
 
 class StringPerOption(db.EmbeddedDocument):
-    option = db.StringField(max_length=30)
+    option = db.StringField(max_length=50)
     value = db.StringField(max_length=30)
 
 class ListPerOption(db.EmbeddedDocument):
-    option = db.StringField(max_length=30)
+    option = db.StringField(max_length=50)
     value = db.ListField(db.StringField(max_length=30))
 
 class PotentiallySubjectiveResponse(db.EmbeddedDocument):

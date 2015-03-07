@@ -281,6 +281,7 @@ def _save_answers(form, section, survey):
                 'lpo': _save_list_per_option,
                 'lst': _save_list_item,
                 'chr': _save_character,
+                'psr': _save_raw_psr,
             }
             if indicator in indicated_types:
                 indicated_types[indicator](form, key, value, section, survey)
@@ -385,6 +386,13 @@ def _save_character(form, key, value, section, survey):
         )
     )
     survey.overview.characters.append(character)
+
+def _save_raw_psr(form, key, value, section, survey):
+    survey.__getattribute__(section).__setattr__(
+        key,
+        models.PotentiallySubjectiveResponse(
+            value=value,
+            subjective=True))
 
 if __name__ == '__main__':
     app.secret_key = 'Development key'
