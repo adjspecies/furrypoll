@@ -74,10 +74,10 @@
                 <p>This section requires JavaScript to complete</p>
             </noscript>
             <div id="gender-expression-coords"></div>
-            <input type="hidden" name="" id="gender-expression-coords--male" />
-            <input type="hidden" name="" id="gender-expression-coords--male-quantized" />
-            <input type="hidden" name="" id="gender-expression-coords--female" />
-            <input type="hidden" name="" id="gender-expression-coords--female-quantized" />
+            <input type="hidden" name="gic_exp_male" id="gender-expression-coords--male" />
+            <input type="hidden" name="gic_exp_male_quantized" id="gender-expression-coords--male-quantized" />
+            <input type="hidden" name="gic_exp_female" id="gender-expression-coords--female" />
+            <input type="hidden" name="gic_exp_female_quantized" id="gender-expression-coords--female-quantized" />
         </dd>
         <dt>What is your self-identified gender?</dt>
         <dd>
@@ -120,15 +120,15 @@
             </label>
             Optionally, please specify:
             <input type="text" name="gender_identity_other" data-number="4" disabled="disabled" />
-            <p>Optional: in addition, you may click anywhere in the diamond below to indicate both where you feel you fit on the spectrum of gender identity, as well as how strongly you experience gender.</p>
+            <p>Optional: in addition, you may click anywhere in the diamond below to indicate both where you feel you fit on the spectrum of gender <em>identity</em>, as well as how strongly you experience gender.</p>
             <noscript>
                 <p>This section requires JavaScript to complete</p>
             </noscript>
             <div id="gender-identity-coords"></div>
-            <input type="hidden" name="" id="gender-identity-coords--male" />
-            <input type="hidden" name="" id="gender-identity-coords--male-quantized" />
-            <input type="hidden" name="" id="gender-identity-coords--female" />
-            <input type="hidden" name="" id="gender-identity-coords--female-quantized" />
+            <input type="hidden" name="gic_gid_male" id="gender-identity-coords--male" />
+            <input type="hidden" name="gic_gid_male_quantized" id="gender-identity-coords--male-quantized" />
+            <input type="hidden" name="gic_gid_female" id="gender-identity-coords--female" />
+            <input type="hidden" name="gic_gid_female_quantized" id="gender-identity-coords--female-quantized" />
         </dd>
         <dt>What is your sexual orientation?</dt>
         <dd>
@@ -1023,10 +1023,10 @@
                 <p>This section requires JavaScript to complete</p>
             </noscript>
             <div id="gender-in-furry-coords"></div>
-            <input type="hidden" name="" id="gender-in-furry-coords--male" />
-            <input type="hidden" name="" id="gender-in-furry-coords--male-quantized" />
-            <input type="hidden" name="" id="gender-in-furry-coords--female" />
-            <input type="hidden" name="" id="gender-in-furry-coords--female-quantized" />
+            <input type="hidden" name="gic_gif_male" id="gender-in-furry-coords--male" />
+            <input type="hidden" name="gic_gif_male_quantized" id="gender-in-furry-coords--male-quantized" />
+            <input type="hidden" name="gic_gif_female" id="gender-in-furry-coords--female" />
+            <input type="hidden" name="gic_gif_female_quantized" id="gender-in-furry-coords--female-quantized" />
         </dd>
         <dt>Activities within the subculture - if you are a furry, how often do you:</dt>
         <dd>
@@ -1336,43 +1336,43 @@
         <dt>Would you describe yourself as:</dt>
         <dd>
             <label class="checkbox">
-                <input type="checkbox" name="" value="lst_sds_animal_rights_advocate" id="25_animal_rights_advocate" />
+                <input type="checkbox" name="lst_sds" value="animal_rights_advocate" id="25_animal_rights_advocate" />
                 An animal rights advocate
             </label>
             <label class="checkbox">
-                <input type="checkbox" name="" value="lst_sds_vegetarian" id="25_vegetarian" />
+                <input type="checkbox" name="lst_sds" value="vegetarian" id="25_vegetarian" />
                 A vegetarian
             </label>
             <label class="checkbox">
-                <input type="checkbox" name="" value="lst_sds_politically_active" id="25_politically_active" />
+                <input type="checkbox" name="lst_sds" value="politically_active" id="25_politically_active" />
                 Politically active
             </label>
             <label class="checkbox">
-                <input type="checkbox" name="" value="lst_sds_otherkin" id="25_otherkin" />
+                <input type="checkbox" name="lst_sds" value="otherkin" id="25_otherkin" />
                 Otherkin
             </label>
             <label class="checkbox">
-                <input type="checkbox" name="" value="lst_sds_hunter" id="25_hunter" />
+                <input type="checkbox" name="lst_sds" value="hunter" id="25_hunter" />
                 A hunter
             </label>
             <label class="checkbox">
-                <input type="checkbox" name="" value="lst_sds_athlete" id="25_athlete" />
+                <input type="checkbox" name="lst_sds" value="athlete" id="25_athlete" />
                 An athlete
             </label>
             <label class="checkbox">
-                <input type="checkbox" name="" value="lst_sds_gun_owner" id="25_gun_owner" />
+                <input type="checkbox" name="lst_sds" value="gun_owner" id="25_gun_owner" />
                 A gun owner
             </label>
             <label class="checkbox">
-                <input type="checkbox" name="" value="lst_sds_open_source" id="25_open_source" />
+                <input type="checkbox" name="lst_sds" value="open_source" id="25_open_source" />
                 Interested in open-source software
             </label>
             <label class="checkbox">
-                <input type="checkbox" name="" value="lst_sds_outdoors" id="25_outdoors" />
+                <input type="checkbox" name="lst_sds" value="outdoors" id="25_outdoors" />
                 Interested in the outdoors
             </label>
             <label class="checkbox">
-                <input type="checkbox" name="" value="lst_sds_sports" id="25_sports" />
+                <input type="checkbox" name="lst_sds" value="sports" id="25_sports" />
                 Interested in sports
             </label>
         </dd>

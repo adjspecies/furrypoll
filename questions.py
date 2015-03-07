@@ -87,4 +87,13 @@ question_options = {
         'legal_non_marriage': { 'subjective': False },
         'married': { 'subjective': False },
     },
+    'how_human': {
+        'completely_human': { 'subjective': False },
+        'completely_human_admire_aspects': { 'subjective': False },
+        'mostly_human': { 'subjective': False },
+        'both_human_and_other_species': { 'subjective': False },
+        'mostly_other_species': { 'subjective': False },
+        'other_species': { 'subjective': False },
+        'other': { 'subjective': True },
+    },
 }

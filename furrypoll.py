@@ -261,6 +261,10 @@ def _save_answers(form, section, survey):
         value = form.get(key, '')
         if value == '':
             continue
+        if key in ['submit', 'complete', 'cancel']:
+            continue
+        if key.endswith('_other'):
+            continue
         if key in questions.question_options:
             psr_lists = ['race', 'occupation']
             if key in psr_lists:
@@ -287,12 +291,12 @@ def _save_answers(form, section, survey):
                 indicated_types[indicator](form, key, value, section, survey)
             else:
                 try:
-                    question = survey.__getattribute__(section).__getattribute__(key)
-                    if question.isinstance(db.BooleanField):
-                        value = value not in [None, '']
-                    survey.__getattribute__(section).__setattr__(key, value)
-                except AttributeError:
-                    continue
+                    value = float(value)
+                except:
+                    pass
+                if value == 'on':
+                    value = True
+                survey.__getattribute__(section).__setattr__(key, value)
 
 def _psr_from_value(form, key, value):
     value_to_save = value
@@ -306,13 +310,14 @@ def _psr_from_value(form, key, value):
 def _save_gender_identity_coordinates(form, key, value, section, survey):
     name = key[4:7]
     gic = models.GenderIdentityCoordinates(
-        male=form.pop('gic_{}_male'.format(name), ''),
-        female=form.pop('gic_{}_female'.format(name), ''),
-        male_quantized=form.pop('gic_{}_male_quantized'.format(name), ''),
-        female_quantized=equest.form.pop('gic_{}_female_quantized'.format(name), ''),
+        male=form.get('gic_{}_male'.format(name), ''),
+        female=form.get('gic_{}_female'.format(name), ''),
+        male_quantized=form.get('gic_{}_male_quantized'.format(name), ''),
+        female_quantized=form.get('gic_{}_female_quantized'.format(name), ''),
     )
     question_name = {
-        'gic': 'gender_identity_coords',
+        'exp': 'gender_expression_coords',
+        'gid': 'gender_identity_coords',
         'gif': 'gender_in_furry_coords',
     }[name]
     survey.__getattribute__(section).__setattr__(question_name, gic)
@@ -363,7 +368,8 @@ def _save_list_item(form, key, value, section, survey):
         'con': 'conventions',
         'sds': 'self_described',
     }[name]
-    survey.__getattribute__(section).__getattribute__(question_name).append(value)
+    values = form.getlist(key)
+    survey.__getattribute__(section).__setattr__(question_name, values)
 
 def _save_character(form, key, value, section, survey):
     index = key.split('_')[1]
@@ -371,8 +377,12 @@ def _save_character(form, key, value, section, survey):
     if index in map(lambda x: x.index, existing_characters):
         return
     species_category = form.getlist('chr_{}_category'.format(index))
-    species_text = form.get('chr_{}_species'.format(index), species_category)
+    species_text = form.get('chr_{}_species'.format(index), ', '.join(species_category))
     reason = form.get('chr_{}_reason'.format(index), '')
+    primary_character = form.get('chr_{}_primary'.format(index), '') != ''
+    deprecated_character = form.get('chr_{}_deprecated'.format(index), '') != ''
+    if not species_category and not species_text:
+        return
     character = models.Character(
         index=index,
         species_category=species_category,
@@ -380,6 +390,8 @@ def _save_character(form, key, value, section, survey):
             subjective=True,
             value=species_text
         ),
+        primary_character=primary_character,
+        deprecated_character=deprecated_character,
         reason=models.PotentiallySubjectiveResponse(
             subjective=True,
             value=reason
@@ -388,6 +400,7 @@ def _save_character(form, key, value, section, survey):
     survey.overview.characters.append(character)
 
 def _save_raw_psr(form, key, value, section, survey):
+    key = key[4:]
     survey.__getattribute__(section).__setattr__(
         key,
         models.PotentiallySubjectiveResponse(
