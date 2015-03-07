@@ -39,7 +39,7 @@ class GenderIdentityCoordinates(db.EmbeddedDocument):
 
 class Character(db.EmbeddedDocument):
     index = db.IntField()
-    species_category = db.StringField(max_length=200)
+    species_category = db.ListField(db.StringField(max_length=200))
     species_text = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
     primary_character = db.BooleanField()
     deprecated_character = db.BooleanField()
@@ -72,8 +72,7 @@ class Overview(db.EmbeddedDocument):
     location_size = db.StringField(max_length=20)
     race = db.ListField(db.EmbeddedDocumentField('PotentiallySubjectiveResponse'))
     spirituality = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
-    politics_economic = db.EmbeddedDocumentField('NumberPerOption')
-    politics_social = db.EmbeddedDocumentField('NumberPerOption')
+    political_views = db.ListField(db.EmbeddedDocumentField('NumberPerOption'))
     occupation = db.ListField(db.EmbeddedDocumentField('PotentiallySubjectiveResponse'))
     education = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
     relationship = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')

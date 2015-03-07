@@ -26,6 +26,10 @@ db = MongoEngine(app)
 
 @app.before_request
 def before_request():
+    """Pre-request checks
+
+    If the survey is not active, do not allow any paths except /
+    """
     if not app.config['SURVEY_ACTIVE'] and request.path != u'/':
         flash('The survey is not currently active.')
         return redirect('/')
@@ -33,6 +37,7 @@ def before_request():
 
 @app.route('/')
 def front():
+    """Render the front page"""
     return render_template('front.html')
 
 @app.route('/survey/start/', methods=['GET', 'POST'])
@@ -40,16 +45,21 @@ def surveyStart():
     """Begin a survey
 
     This view creates a response object if none exists and provides the user
-    with some additional information about the survey.
+    with some additional information about the survey.  Additionally, bot
+    checks are made with a honeypot and a simple math question.
     """
+    # If it's a POST request, we need to check for bots.
     if request.method == 'POST':
-        if int(request.form.get('result', None)) == session.get('add_a', 0) + \
-                session.get('add_b', 0) and request.form.get('hp_field', '') == '':
+        if (int(request.form.get('result', None)) == session.get('add_a', 0)
+                + session.get('add_b', 0)) \
+                and request.form.get('hp_field', '') == '':
             return redirect('/survey/overview/')
         else:
             flash('''Please ensure that you have answered the simple question
             below to start the survey!''')
-    if session.get('response_id', None) is not None:
+
+    # Create a new response object if none exists.
+    if session.get('response_id') is not None:
         survey = models.Response.objects.get(id=session['response_id'])
     else:
         survey = models.Response()
@@ -70,11 +80,16 @@ def surveyStart():
             to continue; otherwise, please <a href="/survey/cancel">cancel
             the survey</a> if you have already completed it.''')
             survey.metadata.touchpoints.append(models.Touchpoint(touchpoint_type=-6))
+
+    # Prepare bot checks.
     add_a = random.randint(1, 20)
     add_b = random.randint(1, 20)
     session['add_a'] = add_a
     session['add_b'] = add_b
-    return render_template('start.html', survey_id=str(survey.id), add_a=add_a, add_b=add_b)
+    return render_template('start.html',
+                           survey_id=str(survey.id), 
+                           add_a=add_a, 
+                           add_b=add_b)
 
 @app.route('/touch/question/<int:question_id>')
 def surveyQuestion(question_id):
@@ -84,7 +99,7 @@ def surveyQuestion(question_id):
     used to judge how quickly the respondent answered each question; spam
     responses generally take place far too quickly.
     """
-    if session.get('response_id', None) is None:
+    if session.get('response_id') is None:
         return '{"error":"No session id"}'
     tp = models.Touchpoint(
         touchpoint_type=question_id
@@ -97,24 +112,36 @@ def surveyQuestion(question_id):
 @app.route('/survey/overview/', methods=['GET', 'POST'])
 def surveyOverview():
     """The Overview section of the survey"""
-    if (session.get('response_id', None) is None):
+    # Check if we have a response.
+    if session.get('response_id') is None:
         return redirect('/')
+
     survey = models.Response.objects.get(id=session['response_id'])
     if request.method == 'POST':
+        # Add a page touchpoint.
         tp = models.Touchpoint(
             touchpoint_type=-1
         )
         survey.metadata.touchpoints.append(tp)
-        if request.form.get('cancel', None) is not None:
+
+        # Cancel if requested.
+        if request.form.get('cancel') is not None:
             survey.save()
             return redirect('/survey/cancel/')
+
+        # Save answers if provided.
         survey.overview = models.Overview()
         _save_answers(request.form, 'overview', survey)
         survey.save()
+
+        # Complete the survey if requested.
         if request.form.get('complete', None) is not None:
             return redirect('/survey/complete')
+
+        # Otherwise, continue on to the next page.
         return redirect('/survey/psychographic/')
     else:
+        # Check if we've already completed the Overview.
         if -1 in [tp.touchpoint_type for tp in survey.metadata.touchpoints]:
             flash("Looks like you've already completed the overview...")
             return redirect('/survey/psychographic/')
@@ -123,22 +150,36 @@ def surveyOverview():
 @app.route('/survey/psychographic/', methods=['GET', 'POST'])
 def surveyPsychographic():
     """The Psychographic Battery section of the survey"""
+    # Check if we have a response.
+    if session.get('response_id') is None:
+        return redirect('/')
+
     survey = models.Response.objects.get(id=session['response_id'])
     if request.method == 'POST':
+        # Add a page touchpoint.
         tp = models.Touchpoint(
             touchpoint_type=-2
         )
         survey.metadata.touchpoints.append(tp)
+
+        # Cancel if requested.
         if request.form.get('cancel', None) is not None:
             survey.save()
             return redirect('/survey/cancel/')
+
+        # Save answers if provided.
         survey.psychographic_battery = models.PsychographicBattery()
         _save_answers(request.form, 'psychographic_battery', survey)
         survey.save()
+
+        # Complete the survey if requested.
         if request.form.get('complete', None) is not None:
             return redirect('/survey/complete')
+
+        # Otherwise, continue on to the next page.
         return redirect('/survey/sexuality/')
     else:
+        # Check if we've already completed the battery.
         if -2 in [tp.touchpoint_type for tp in survey.metadata.touchpoints]:
             flash("Looks like you've already completed the psychographic battery...")
             return redirect('/survey/sexuality/')
@@ -147,20 +188,32 @@ def surveyPsychographic():
 @app.route('/survey/sexuality/', methods=['GET', 'POST'])
 def surveySexuality():
     """The Sexuality section of the survey"""
+    # Check if we have a response.
+    if session.get('response_id') is None:
+        return redirect('/')
+
     survey = models.Response.objects.get(id=session['response_id'])
     if request.method == 'POST':
+        # Add a page touchpoint.
         tp = models.Touchpoint(
             touchpoint_type=-3
         )
         survey.metadata.touchpoints.append(tp)
+
+        # Cancel if requested.
         if request.form.get('cancel', None) is not None:
             survey.save()
             return redirect('/survey/cancel/')
+
+        # Save answers if provided.
         survey.sexuality = models.Sexuality()
         _save_answers(request.form, 'sexuality', survey)
         survey.save()
+
+        # Complete the survey.
         return redirect('/survey/complete/')
     else:
+        # Check if we've already completed the sexuality section.
         if -3 in [tp.touchpoint_type for tp in survey.metadata.touchpoints]:
             flash("Looks like you've already completed the sexuality section...")
             return redirect('/survey/complete/')
@@ -172,6 +225,7 @@ def surveyComplete():
     if session.get('response_id') is not None:
         survey = models.Response.objects.get(id=session['response_id'])
         if -4 not in [tp.touchpoint_type for tp in survey.metadata.touchpoints]:
+            # Add a complete touchpoint.
             flash("Survey complete! Thank you!")
             tp = models.Touchpoint(
                 touchpoint_type=-4
@@ -187,6 +241,7 @@ def surveyComplete():
 def surveyCancel():
     """Mark a survey as canceled"""
     survey = models.Response.objects.get(id=session['response_id'])
+    # Add a cancel touchpoint.
     tp = models.Touchpoint(
         touchpoint_type=-5
     )
@@ -197,101 +252,139 @@ def surveyCancel():
     return render_template('cancel.html')
 
 def _save_answers(form, section, survey):
-    for key in form.to_dict():
+    """Save question answers.
+
+    Given a form, the section which is to be saved, and a survey response
+    object, save the questions from the form in the survey response.
+    """
+    for key in form.keys():
         value = form.get(key, '')
         if value == '':
             continue
         if key in questions.question_options:
-            if value == 'other':
-                value = form.pop('{}_other'.format(key), 'other (not specified)')
-            psr = models.PotentiallySubjectiveResponse(
-                value=value,
-                subjective=questions.question_options[key][value]['subjective']
-            )
-            survey.__getattribute__(section).__setattr__(key, psr)
+            psr_lists = ['race', 'occupation']
+            if key in psr_lists:
+                values = form.getlist(key)
+                for value in values:
+                    survey.__getattribute__(section).__getattribute__(key).append(
+                        _psr_from_value(form, key, value))
+            else:
+                survey.__getattribute__(section).__setattr__(
+                    key,
+                    _psr_from_value(form, key, value))
         else:
             indicator = key[:3]
-            if indicator == 'gic':
-                name = key[4:7]
-                gic = models.GenderIdentityCoordinates(
-                    male=form.pop('gic_{}_male'.format(name), ''),
-                    female=form.pop('gic_{}_female'.format(name), ''),
-                    male_quantized=form.pop('gic_{}_male_quantized'.format(name), ''),
-                    female_quantized=equest.form.pop('gic_{}_female_quantized'.format(name), ''),
-                )
-                # TODO move to questions
-                question_name = {
-                    'gic': 'gender_identity_coords',
-                    'gif': 'gender_in_furry_coords',
-                }[name]
-                survey.__getattribute__(section).__setattr__(question_name, gic)
-            elif indicator == 'npo':
-                name = key[4:7]
-                npo = models.NumberPerOption(
-                    option=key[8:],
-                    value=value
-                )
-                question_name = {
-                    'pol': 'political_views',
-                    'fac': 'furry_activities',
-                    'fao': 'furry_activities_opinion',
-                    'nfa': 'non_furry_activities',
-                    'imp': 'furry_importance',
-                    'bat': 'battery',
-                    'sim': 'sex_importance',
-                    'dvs': 'dom_or_sub',
-                }[name]
-                survey.__getattribute__(section).__getattribute__(question_name).append(npo)
-            elif indicator == 'spo':
-                name = key[4:7]
-                spo = models.StringPerOption(
-                    option=key[8:],
-                    value=value
-                )
-                question_name = {
-                    'fws': 'furry_websites',
-                }[name]
-                survey.__getattribute__(section).__getattribute__(question_name).append(spo)
-            elif indicator == 'lpo':
-                name = key[4:7]
-                lpo = models.ListPerOption(
-                    option=key[8:],
-                    value=form.getlist(key)
-                )
-                question_name = {
-                    'int': 'interests',
-                }[name]
-                survey.__getattribute__(section).__getattribute__(question_name).append(lpo)
-            elif indicator == 'lst':
-                name = key[4:7]
-                question_name = {
-                    'con': 'conventions',
-                    'sds': 'self_described',
-                }[name]
-                survey.__getattribute__(section).__getattribute__(question_name).append(value)
-            elif indicator == 'chr':
-                index = key.split('_')[1]
-                species_category = form.get('chr_{}_category'.format(index), '')
-                species_text = form.get('chr_{}_species'.format(index), species_category)
-                reason = form.get('chr_{}_reason'.format(index), '')
-                character = models.Character(
-                    index=index,
-                    species_category=species_category,
-                    species_text=models.PotentiallySubjectiveResponse(
-                        subjective=True,
-                        value=species_text
-                    ),
-                    reason=models.PotentiallySubjectiveResponse(
-                        subjective=True,
-                        value=reason
-                    )
-                )
-                survey.__getattribute__(section).characters.append(character)
+            indicated_types = {
+                'gic': _save_gender_identity_coordinates,
+                'npo': _save_number_per_option,
+                'spo': _save_string_per_option,
+                'lpo': _save_list_per_option,
+                'lst': _save_list_item,
+                'chr': _save_character,
+            }
+            if indicator in indicated_types:
+                indicated_types[indicator](form, key, value, section, survey)
             else:
                 try:
+                    question = survey.__getattribute__(section).__getattribute__(key)
+                    if question.isinstance(db.BooleanField):
+                        value = value not in [None, '']
                     survey.__getattribute__(section).__setattr__(key, value)
                 except AttributeError:
                     continue
+
+def _psr_from_value(form, key, value):
+    value_to_save = value
+    if value == 'other':
+        value_to_save = form.get('{}_other'.format(key), 'other (not specified)')
+    return models.PotentiallySubjectiveResponse(
+        value=value_to_save,
+        subjective=questions.question_options[key][value]['subjective']
+    )
+
+def _save_gender_identity_coordinates(form, key, value, section, survey):
+    name = key[4:7]
+    gic = models.GenderIdentityCoordinates(
+        male=form.pop('gic_{}_male'.format(name), ''),
+        female=form.pop('gic_{}_female'.format(name), ''),
+        male_quantized=form.pop('gic_{}_male_quantized'.format(name), ''),
+        female_quantized=equest.form.pop('gic_{}_female_quantized'.format(name), ''),
+    )
+    question_name = {
+        'gic': 'gender_identity_coords',
+        'gif': 'gender_in_furry_coords',
+    }[name]
+    survey.__getattribute__(section).__setattr__(question_name, gic)
+
+def _save_number_per_option(form, key, value, section, survey):
+    name = key[4:7]
+    npo = models.NumberPerOption(
+        option=key[8:],
+        value=value
+    )
+    question_name = {
+        'pol': 'political_views',
+        'fac': 'furry_activities',
+        'fao': 'furry_activities_opinion',
+        'nfa': 'non_furry_activities',
+        'imp': 'furry_importance',
+        'bat': 'battery',
+        'sim': 'sex_importance',
+        'dvs': 'dom_or_sub',
+    }[name]
+    survey.__getattribute__(section).__getattribute__(question_name).append(npo)
+
+def _save_string_per_option(form, key, value, section, survey):
+    name = key[4:7]
+    spo = models.StringPerOption(
+        option=key[8:],
+        value=value
+    )
+    question_name = {
+        'fws': 'furry_websites',
+    }[name]
+    survey.__getattribute__(section).__getattribute__(question_name).append(spo)
+
+def _save_list_per_option(form, key, value, section, survey):
+    name = key[4:7]
+    lpo = models.ListPerOption(
+        option=key[8:],
+        value=form.getlist(key)
+    )
+    question_name = {
+        'int': 'interests',
+    }[name]
+    survey.__getattribute__(section).__getattribute__(question_name).append(lpo)
+
+def _save_list_item(form, key, value, section, survey):
+    name = key[4:7]
+    question_name = {
+        'con': 'conventions',
+        'sds': 'self_described',
+    }[name]
+    survey.__getattribute__(section).__getattribute__(question_name).append(value)
+
+def _save_character(form, key, value, section, survey):
+    index = key.split('_')[1]
+    existing_characters = survey.overview.characters
+    if index in map(lambda x: x.index, existing_characters):
+        return
+    species_category = form.getlist('chr_{}_category'.format(index))
+    species_text = form.get('chr_{}_species'.format(index), species_category)
+    reason = form.get('chr_{}_reason'.format(index), '')
+    character = models.Character(
+        index=index,
+        species_category=species_category,
+        species_text=models.PotentiallySubjectiveResponse(
+            subjective=True,
+            value=species_text
+        ),
+        reason=models.PotentiallySubjectiveResponse(
+            subjective=True,
+            value=reason
+        )
+    )
+    survey.overview.characters.append(character)
 
 if __name__ == '__main__':
     app.secret_key = 'Development key'
