@@ -13,9 +13,6 @@ import datetime
 import os
 import random
 
-import models
-import questions
-
 
 app = Flask(__name__)
 app.config["MONGODB_SETTINGS"] = {'DB': 'furrypoll_2015'}
@@ -24,6 +21,10 @@ app.config["DEBUG"] = False
 app.config['SURVEY_ACTIVE'] = False
 
 db = MongoEngine(app)
+
+# Older python compat - db has to be defined first.
+import models
+import questions
 
 
 @app.before_request
