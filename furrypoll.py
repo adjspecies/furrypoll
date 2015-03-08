@@ -259,13 +259,21 @@ def _save_answers(form, section, survey):
     """
     for key in form.keys():
         value = form.get(key, '')
+
+        # Skip blank answers.
         if value == '':
             continue
+
+        # Skip values from button clicks
         if key in ['submit', 'complete', 'cancel']:
             continue
+
+        # Skip other text fields, which will be fetched manually.
         if key.endswith('_other'):
             continue
+
         if key in questions.question_options:
+            # If it's in a list of question options, save a PSR.
             psr_lists = ['race', 'occupation']
             if key in psr_lists:
                 values = form.getlist(key)
@@ -277,6 +285,7 @@ def _save_answers(form, section, survey):
                     key,
                     _psr_from_value(form, key, value))
         else:
+            # If it has an indicator type, utilize the proper save method.
             indicator = key[:3]
             indicated_types = {
                 'gic': _save_gender_identity_coordinates,
@@ -290,6 +299,7 @@ def _save_answers(form, section, survey):
             if indicator in indicated_types:
                 indicated_types[indicator](form, key, value, section, survey)
             else:
+                # Otherwise, save strings, floats, booleans.
                 try:
                     value = float(value)
                 except:
@@ -299,6 +309,7 @@ def _save_answers(form, section, survey):
                 survey.__getattribute__(section).__setattr__(key, value)
 
 def _psr_from_value(form, key, value):
+    """Save PotentiallySubjectiveResponse from a given value."""
     value_to_save = value
     if value == 'other':
         value_to_save = form.get('{}_other'.format(key), 'other (not specified)')
@@ -308,6 +319,7 @@ def _psr_from_value(form, key, value):
     )
 
 def _save_gender_identity_coordinates(form, key, value, section, survey):
+    """Save gender widget coordinates."""
     name = key[4:7]
     gic = models.GenderIdentityCoordinates(
         male=form.get('gic_{}_male'.format(name), ''),
@@ -323,6 +335,7 @@ def _save_gender_identity_coordinates(form, key, value, section, survey):
     survey.__getattribute__(section).__setattr__(question_name, gic)
 
 def _save_number_per_option(form, key, value, section, survey):
+    """Save number-per-option questions."""
     name = key[4:7]
     npo = models.NumberPerOption(
         option=key[8:],
@@ -341,6 +354,7 @@ def _save_number_per_option(form, key, value, section, survey):
     survey.__getattribute__(section).__getattribute__(question_name).append(npo)
 
 def _save_string_per_option(form, key, value, section, survey):
+    """Save string-per-option types."""
     name = key[4:7]
     spo = models.StringPerOption(
         option=key[8:],
@@ -352,6 +366,7 @@ def _save_string_per_option(form, key, value, section, survey):
     survey.__getattribute__(section).__getattribute__(question_name).append(spo)
 
 def _save_list_per_option(form, key, value, section, survey):
+    """Save list-per-option types."""
     name = key[4:7]
     lpo = models.ListPerOption(
         option=key[8:],
@@ -363,6 +378,7 @@ def _save_list_per_option(form, key, value, section, survey):
     survey.__getattribute__(section).__getattribute__(question_name).append(lpo)
 
 def _save_list_item(form, key, value, section, survey):
+    """Append an item to a list."""
     name = key[4:7]
     question_name = {
         'con': 'conventions',
@@ -372,6 +388,7 @@ def _save_list_item(form, key, value, section, survey):
     survey.__getattribute__(section).__setattr__(question_name, values)
 
 def _save_character(form, key, value, section, survey):
+    """Save characters with metadata."""
     index = key.split('_')[1]
     existing_characters = survey.overview.characters
     if index in map(lambda x: x.index, existing_characters):
