@@ -82,10 +82,8 @@ def surveyStart():
             survey.metadata.touchpoints.append(models.Touchpoint(touchpoint_type=-6))
 
     # Prepare bot checks.
-    add_a = random.randint(1, 20)
-    add_b = random.randint(1, 20)
-    session['add_a'] = add_a
-    session['add_b'] = add_b
+    session['add_a'] = add_a = random.randint(1, 10)
+    session['add_b'] = add_b = random.randint(1, 10)
     return render_template('start.html',
                            survey_id=str(survey.id), 
                            add_a=add_a, 

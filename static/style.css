@@ -78,6 +78,7 @@ dt {
 @media screen and (min-width: 1000px) {
     .species-block {
         padding-right: 2em;
+        padding-bottom: 2em;
         float: left;
         width: 20%;
     }
