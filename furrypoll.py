@@ -43,7 +43,7 @@ def before_request():
 @app.route('/')
 def front():
     """Render the front page"""
-    return render_template('front.html')
+    return render_template('front.html', survey_active=app.config['SURVEY_ACTIVE'])
 
 
 @app.route('/survey/start/', methods=['GET', 'POST'])

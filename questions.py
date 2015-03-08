@@ -1,5 +1,14 @@
 question_options = {
-    '_birth_year': [2015 - i for i in range(0, 100)],
+    'furry_status': {
+        'furry': { 'subjective': False },
+        'fur_fan': { 'subjective': False },
+        'furry_lifestyler': { 'subjective': False },
+        'postfurry': { 'subjective': False },
+        'furry_adjacent': { 'subjective': False },
+        'furry_related': { 'subjective': False },
+        'nonfurry': { 'subjective': False },
+        'other': { 'subjective': True },
+    },
     'clinical_sex': {
         'female': { 'subjective': False },
         'male': { 'subjective': False },
