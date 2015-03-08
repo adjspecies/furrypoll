@@ -42,8 +42,5 @@ nosetests.xml
 node_modules
 npm-debug.log
 
-# Generated coffeescript
-static/js
-
 # Vim
 .*.swp
