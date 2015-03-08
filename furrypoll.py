@@ -16,13 +16,15 @@ import random
 import models
 import questions
 
+
 app = Flask(__name__)
 app.config["MONGODB_SETTINGS"] = {'DB': 'furrypoll_2015'}
 app.config["SECRET_KEY"] = os.urandom(12)
-app.config["DEBUG"] = True
-app.config['SURVEY_ACTIVE'] = True
+app.config["DEBUG"] = False
+app.config['SURVEY_ACTIVE'] = False
 
 db = MongoEngine(app)
+
 
 @app.before_request
 def before_request():
@@ -30,6 +32,8 @@ def before_request():
 
     If the survey is not active, do not allow any paths except /
     """
+    if 'static' in request.path:
+        return
     if not app.config['SURVEY_ACTIVE'] and request.path != u'/':
         flash('The survey is not currently active.')
         return redirect('/')
@@ -39,6 +43,7 @@ def before_request():
 def front():
     """Render the front page"""
     return render_template('front.html')
+
 
 @app.route('/survey/start/', methods=['GET', 'POST'])
 def surveyStart():
@@ -89,6 +94,7 @@ def surveyStart():
                            add_a=add_a, 
                            add_b=add_b)
 
+
 @app.route('/touch/question/<int:question_id>')
 def surveyQuestion(question_id):
     """Mark a question answered
@@ -106,6 +112,7 @@ def surveyQuestion(question_id):
     survey.metadata.touchpoints.append(tp)
     survey.save()
     return '{"error":null}'
+
 
 @app.route('/survey/overview/', methods=['GET', 'POST'])
 def surveyOverview():
@@ -145,6 +152,7 @@ def surveyOverview():
             return redirect('/survey/psychographic/')
         return render_template('overview.html', questions=questions)
 
+
 @app.route('/survey/psychographic/', methods=['GET', 'POST'])
 def surveyPsychographic():
     """The Psychographic Battery section of the survey"""
@@ -183,6 +191,7 @@ def surveyPsychographic():
             return redirect('/survey/sexuality/')
         return render_template('psychographic.html')
 
+
 @app.route('/survey/sexuality/', methods=['GET', 'POST'])
 def surveySexuality():
     """The Sexuality section of the survey"""
@@ -217,6 +226,7 @@ def surveySexuality():
             return redirect('/survey/complete/')
         return render_template('sexuality.html')
 
+
 @app.route('/survey/complete/', methods=['GET', 'POST'])
 def surveyComplete():
     """Mark a survey as complete"""
@@ -235,9 +245,12 @@ def surveyComplete():
         session['response_id'] = None
     return render_template('complete.html')
 
+
 @app.route('/survey/cancel/', methods=['GET', 'POST'])
 def surveyCancel():
     """Mark a survey as canceled"""
+    if session.get('response_id') is None:
+        return redirect('/')
     survey = models.Response.objects.get(id=session['response_id'])
     # Add a cancel touchpoint.
     tp = models.Touchpoint(
@@ -248,6 +261,7 @@ def surveyCancel():
     flash("Survey canceled.  Thank you for your time!")
     session['response_id'] = None
     return render_template('cancel.html')
+
 
 def _save_answers(form, section, survey):
     """Save question answers.
@@ -306,6 +320,7 @@ def _save_answers(form, section, survey):
                     value = True
                 survey.__getattribute__(section).__setattr__(key, value)
 
+
 def _psr_from_value(form, key, value):
     """Save PotentiallySubjectiveResponse from a given value."""
     value_to_save = value
@@ -315,6 +330,7 @@ def _psr_from_value(form, key, value):
         value=value_to_save,
         subjective=questions.question_options[key][value]['subjective']
     )
+
 
 def _save_gender_identity_coordinates(form, key, value, section, survey):
     """Save gender widget coordinates."""
@@ -331,6 +347,7 @@ def _save_gender_identity_coordinates(form, key, value, section, survey):
         'gif': 'gender_in_furry_coords',
     }[name]
     survey.__getattribute__(section).__setattr__(question_name, gic)
+
 
 def _save_number_per_option(form, key, value, section, survey):
     """Save number-per-option questions."""
@@ -351,6 +368,7 @@ def _save_number_per_option(form, key, value, section, survey):
     }[name]
     survey.__getattribute__(section).__getattribute__(question_name).append(npo)
 
+
 def _save_string_per_option(form, key, value, section, survey):
     """Save string-per-option types."""
     name = key[4:7]
@@ -362,6 +380,7 @@ def _save_string_per_option(form, key, value, section, survey):
         'fws': 'furry_websites',
     }[name]
     survey.__getattribute__(section).__getattribute__(question_name).append(spo)
+
 
 def _save_list_per_option(form, key, value, section, survey):
     """Save list-per-option types."""
@@ -375,6 +394,7 @@ def _save_list_per_option(form, key, value, section, survey):
     }[name]
     survey.__getattribute__(section).__getattribute__(question_name).append(lpo)
 
+
 def _save_list_item(form, key, value, section, survey):
     """Append an item to a list."""
     name = key[4:7]
@@ -385,36 +405,48 @@ def _save_list_item(form, key, value, section, survey):
     values = form.getlist(key)
     survey.__getattribute__(section).__setattr__(question_name, values)
 
+
 def _save_character(form, key, value, section, survey):
     """Save characters with metadata."""
     index = key.split('_')[1]
-    existing_characters = survey.overview.characters
-    if index in map(lambda x: x.index, existing_characters):
+
+    # Since our form is immutable, we may wind up with additional responses;
+    # If we've already saved this index, skip saving it again.
+    if int(index) in map(lambda x: x.index, survey.overview.characters):
         return
+
+    # Retrieve species data.
     species_category = form.getlist('chr_{}_category'.format(index))
-    species_text = form.get('chr_{}_species'.format(index), ', '.join(species_category))
+    species_text = form.get('chr_{}_species'.format(index),
+                            ', '.join(species_category))
     reason = form.get('chr_{}_reason'.format(index), '')
     primary_character = form.get('chr_{}_primary'.format(index), '') != ''
-    deprecated_character = form.get('chr_{}_deprecated'.format(index), '') != ''
+    deprecated_character = \
+        form.get('chr_{}_deprecated'.format(index), '') != ''
+
+    # Do not save blank species.
     if not species_category and not species_text:
         return
-    character = models.Character(
-        index=index,
-        species_category=species_category,
-        species_text=models.PotentiallySubjectiveResponse(
-            subjective=True,
-            value=species_text
-        ),
-        primary_character=primary_character,
-        deprecated_character=deprecated_character,
-        reason=models.PotentiallySubjectiveResponse(
-            subjective=True,
-            value=reason
+    survey.overview.characters.append(
+        models.Character(
+            index=index,
+            species_category=species_category,
+            species_text=models.PotentiallySubjectiveResponse(
+                subjective=True,
+                value=species_text
+            ),
+            primary_character=primary_character,
+            deprecated_character=deprecated_character,
+            reason=models.PotentiallySubjectiveResponse(
+                subjective=True,
+                value=reason
+            )
         )
     )
-    survey.overview.characters.append(character)
+
 
 def _save_raw_psr(form, key, value, section, survey):
+    """Save raw text as a subjective response."""
     key = key[4:]
     survey.__getattribute__(section).__setattr__(
         key,
@@ -422,6 +454,9 @@ def _save_raw_psr(form, key, value, section, survey):
             value=value,
             subjective=True))
 
+
 if __name__ == '__main__':
     app.secret_key = 'Development key'
+    app.debug = True
+    app.config['SURVEY_ACTIVE'] = True
     app.run()
