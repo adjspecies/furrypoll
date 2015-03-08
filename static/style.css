@@ -75,6 +75,20 @@ dt {
     font-size: 90%;
 }
 
+@media screen and (min-width: 1000px) {
+    .species-block {
+        padding-right: 2em;
+        float: left;
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .gendermap {
+        display: none;
+    }
+}
+
 /*
 Tables
 */
