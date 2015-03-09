@@ -1,4 +1,5 @@
 question_options = {
+    '_birth_year': [2015 - i for i in range(100)],
     'furry_status': {
         'furry': { 'subjective': False },
         'fur_fan': { 'subjective': False },
