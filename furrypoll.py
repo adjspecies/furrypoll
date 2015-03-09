@@ -328,7 +328,7 @@ def _psr_from_value(form, key, value):
     if value == 'other':
         value_to_save = form.get('{}_other'.format(key), 'other (not specified)')
     return models.PotentiallySubjectiveResponse(
-        value=value_to_save,
+            value=value_to_save[:2000],
         subjective=questions.question_options[key][value]['subjective']
     )
 
@@ -452,7 +452,7 @@ def _save_raw_psr(form, key, value, section, survey):
     survey.__getattribute__(section).__setattr__(
         key,
         models.PotentiallySubjectiveResponse(
-            value=value,
+            value=value[:2000],
             subjective=True))
 
 
