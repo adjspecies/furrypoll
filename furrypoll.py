@@ -81,11 +81,11 @@ def surveyStart():
         session['response_id'] = str(survey.id)
         if len(models.Response.objects.filter(metadata__client_ip=request.remote_addr)) > 0:
             flash('''It appears that someone has already completed the furry
-            survey from this computer.  If this is a public computer, a
-            household with multiple people sharing one IP address, or you
-            believe that you have not completed this survey, please feel free
-            to continue; otherwise, please <a href="/survey/cancel">cancel the
-            survey</a> if you have already completed it.''')
+            survey from this computer or IP address.  If this is a public
+            computer, a household with multiple people sharing one IP address,
+            or you believe that you have not completed this survey, please feel
+            free to continue; otherwise, please <a href="/survey/cancel">cancel
+            the survey</a> if you have already completed it.''')
             survey.metadata.touchpoints.append(models.Touchpoint(touchpoint_type=-6))
 
     # Prepare bot checks.
