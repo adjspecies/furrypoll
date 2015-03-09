@@ -434,13 +434,13 @@ def _save_character(form, key, value, section, survey):
             species_category=species_category,
             species_text=models.PotentiallySubjectiveResponse(
                 subjective=True,
-                value=species_text
+                value=species_text[:2000]
             ),
             primary_character=primary_character,
             deprecated_character=deprecated_character,
             reason=models.PotentiallySubjectiveResponse(
                 subjective=True,
-                value=reason
+                value=reason[:2000]
             )
         )
     )
