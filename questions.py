@@ -59,7 +59,7 @@ question_options = {
         'jewish': { 'subjective': False },
         'pagan': { 'subjective': False },
         'buddhist': { 'subjective': False },
-        'athiest': { 'subjective': False },
+        'atheist': { 'subjective': False },
         'agnostic': { 'subjective': False },
         'other': { 'subjective': True },
     },
