@@ -56,8 +56,12 @@ def surveyStart():
     """
     # If it's a POST request, we need to check for bots.
     if request.method == 'POST':
-        if (int(request.form.get('result', '-100')) == session.get('add_a', 0)
-                + session.get('add_b', 0)) \
+        result = -100
+        try:
+            result = int(request.form.get('result', '-100'))
+        except ValueError:
+            pass
+        if (result == session.get('add_a', 0) + session.get('add_b', 0)) \
                 and request.form.get('hp_field', '') == '':
             return redirect('/survey/overview/')
         else:
