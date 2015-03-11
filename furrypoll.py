@@ -79,7 +79,7 @@ def surveyStart():
         survey.metadata.touchpoints.append(start_tp)
         survey.save()
         session['response_id'] = str(survey.id)
-        if len(models.Response.objects.filter(metadata__client_ip=request.remote_addr)) > 0:
+        if len(models.Response.objects.filter(metadata__client_ip=request.remote_addr)) > 1:
             flash('''It appears that someone has already completed the furry
             survey from this computer or IP address.  If this is a public
             computer, a household with multiple people sharing one IP address,
