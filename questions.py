@@ -38,6 +38,7 @@ question_options = {
         'kinsey_5': { 'subjective': False },
         'kinsey_6': { 'subjective': False },
         'pansexual': { 'subjective': False },
+        'asexual': { 'subjective': False },
         'other': { 'subjective': True },
     },
     'race': {
