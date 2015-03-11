@@ -331,7 +331,7 @@ def _psr_from_value(form, key, value):
     return models.PotentiallySubjectiveResponse(
             value=value_to_save[:2000],
         subjective=questions.question_options[key][value]['subjective'] \
-                if value in questions.question_options['key'] else False
+                if value in questions.question_options[key] else False
     )
 
 
