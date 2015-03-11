@@ -10,10 +10,10 @@
     '</div>' +
     '<div class="gendermap-values">' +
       '<div class="gendermap-value male">' +
-        'Male: <span class="gendermap-value-text"></span>' +
+        '{maletext}: <span class="gendermap-value-text"></span>' +
       '</div>' +
       '<div class="gendermap-value female">' +
-        'Female: <span class="gendermap-value-text"></span>' +
+        '{femaletext}: <span class="gendermap-value-text"></span>' +
       '</div>' +
     '</div>' +
   '</div>';
@@ -36,9 +36,17 @@
     };
   };
 
-  $.fn.gendermap = function() {
+  $.fn.gendermap = function(options) {
+    if (!options) {
+      options = {};
+    }
+    options.maletext = options.maletext || 'Male';
+    options.femaletext = options.femaletext || 'Female';
+    var html = mapHTML.replace('{maletext}', options.maletext)
+      .replace('{femaletext}', options.femaletext);
+
     var $mainEl = this;
-    var $content = $(mapHTML);
+    var $content = $(html);
     var clicking = false;
 
     var setValues = function(coords) {
@@ -79,6 +87,10 @@
         }
       });
 
-    return $mainEl.append($content);
+    $mainEl.append($content);
+    if (options.additionalClass) {
+      $mainEl.addClass(options.additionalClass);
+    }
+    return $mainEl;
   };
 }(jQuery));

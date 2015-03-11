@@ -90,6 +90,10 @@ dt {
     }
 }
 
+.expression .gendermap-container {
+    background: url('lib/gendermap-expression.png');
+}
+
 /*
 Tables
 */

@@ -10,7 +10,11 @@
       $('#gender-identity-coords--female').val(mapData.f);
       return $('#gender-identity-coords--female-quantized').val(Math.ceil(mapData.f * 5));
     });
-    $('#gender-expression-coords').gendermap().on('mapClick', function() {
+    $('#gender-expression-coords').gendermap({
+      maletext: 'Masculine',
+      femaletext: 'Feminine',
+      additionalClass: 'expression'
+    }).on('mapClick', function() {
       var mapData;
       mapData = $(this).data('gendermap');
       $('#gender-expression-coords--male').val(mapData.m);

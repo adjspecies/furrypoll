@@ -7,7 +7,11 @@ $(document).ready ->
     $('#gender-identity-coords--female').val mapData.f
     $('#gender-identity-coords--female-quantized').val Math.ceil(mapData.f * 5)
 
-  $('#gender-expression-coords').gendermap().on 'mapClick', () ->
+  $('#gender-expression-coords').gendermap({
+    maletext: 'Masculine',
+    femaletext: 'Feminine',
+    additionalClass: 'expression'
+  }).on 'mapClick', () ->
     mapData = $(@).data 'gendermap'
     $('#gender-expression-coords--male').val mapData.m
     $('#gender-expression-coords--male-quantized').val Math.ceil(mapData.m * 5)
