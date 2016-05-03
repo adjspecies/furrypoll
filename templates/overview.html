@@ -128,7 +128,7 @@
                 <input type="radio" id="3_cis" name="gender_alignment" value="cisgender" data-number="3" /> Yes
             </label>
             <label class="radio">
-                <input type="radio" id="3_trans" name="gender_alignment" value="transgender" data-number="3" /> No
+                <input type="radio" id="3_trans" name="gender_alignment" value="noncisgender" data-number="3" /> No
             </label>
             <label class="radio">
                 <input type="radio" id="3_complicated" name="gender_alignment" value="complicated" data-number="3" /> It's complicated
@@ -439,7 +439,7 @@
                 <option value="ye">Yemen</option>
                 <option value="zm">Zambia</option>
                 <option value="zw">Zimbabwe</option>
-            </select>
+            </select><br />
             State, if in the United States:
             <select name="state" id="6_state">
                 <option value="">-- Select --</option>
@@ -1167,6 +1167,7 @@
         </dd>
         <dt>Regardless of your answers to the previous question, please describe your general feelings to the following on a scale from one to ten:</dt>
         <dd>
+            <blockquote>Leave blank if you do not have an opinion on or haven't interacted with the topic.</blockquote>
             <table>
                 <thead>
                     <tr>
