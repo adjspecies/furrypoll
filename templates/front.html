@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block header %}Welcome to the 2015 Furry Survey{% endblock %}
+{% block header %}Welcome to the 2016 Furry Survey{% endblock %}
 {% block body %}
 <img src="{{ url_for('static', filename='randomwolfsurvey-small.png') }}" style="float:left"/>
-<p>Welcome to the 2015 Furry Survey, the largest market survey of the furry fandom out there!  This year, we're bringing you an all-new survey structure, and we will be collecting data in this format for the next five years to compile into the next longitudinal segment.  If you've taken the Furry Survey before, remember that you can (and should!) take it once per year.</p>
-<p><strong>New this year!</strong>  The survey is broken down into three sections: demographics and overview, psychographic battery (similar to a personality test), and questions about sexuality.  As always, all questions and sections are optional, and you need only fill out what you're comfortable with.  Additionally, we will be welcoming responses from individuals who do not consider themselves members of the furry subculture in order to see the ways in which furries are different from non-furries.</p>
+<p>Welcome to the 2016 Furry Survey, the largest market survey of the furry fandom out there!  This year, we're bringing you an all-new survey structure, and we will be collecting data in this format for the next five years to compile into the next longitudinal segment.  If you've taken the Furry Survey before, remember that you can (and should!) take it once per year.</p>
+<p>The survey is broken down into three sections: demographics and overview, psychographic battery (similar to a personality test), and questions about sexuality.  As always, all questions and sections are optional, and you need only fill out what you're comfortable with.  Additionally, we will be welcoming responses from individuals who do not consider themselves members of the furry subculture in order to see the ways in which furries are different from non-furries.</p>
 <p>All data is stored securely and responses are marked as subjective or objective, so that only non-identifying data will be used in any public fashion.  Of course, all data remains anonymous!</p>
 {% if survey_active %}
 <a href="/survey/start/" class="btn btn-primary">Begin the Survey!</a>

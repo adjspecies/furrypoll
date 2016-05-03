@@ -63,7 +63,7 @@ class Overview(db.EmbeddedDocument):
     furry_status = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
     birth_month = db.IntField()
     birth_year = db.IntField()
-    clinical_sex = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
+    gender_alignment = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
     gender_identity = db.EmbeddedDocumentField('PotentiallySubjectiveResponse')
     gender_identity_coords = db.EmbeddedDocumentField('GenderIdentityCoordinates')
     gender_expression_coords = db.EmbeddedDocumentField('GenderIdentityCoordinates')
