@@ -15,7 +15,7 @@ import random
 
 
 app = Flask(__name__)
-app.config["MONGODB_SETTINGS"] = {'DB': 'furrypoll_2015'}
+app.config["MONGODB_SETTINGS"] = {'DB': 'furrypoll_2016'}
 app.config["SECRET_KEY"] = os.urandom(12)
 app.config["DEBUG"] = False
 app.config['SURVEY_ACTIVE'] = False
@@ -96,8 +96,8 @@ def surveyStart():
     session['add_a'] = add_a = random.randint(1, 10)
     session['add_b'] = add_b = random.randint(1, 10)
     return render_template('start.html',
-                           survey_id=str(survey.id), 
-                           add_a=add_a, 
+                           survey_id=str(survey.id),
+                           add_a=add_a,
                            add_b=add_b)
 
 

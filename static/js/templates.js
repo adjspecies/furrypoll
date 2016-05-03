@@ -85,7 +85,7 @@ templates['character'] = template({"1":function(depth0,helpers,partials,data) {
     + escapeExpression(((helper = (helper = helpers.characterId || (depth0 != null ? depth0.characterId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"characterId","hash":{},"data":data}) : helper)))
     + "_category\" value=\"deer\" type=\"checkbox\"> Ungulate, Deer</label>\n        <label class=\"checkbox\"><input name=\"chr_"
     + escapeExpression(((helper = (helper = helpers.characterId || (depth0 != null ? depth0.characterId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"characterId","hash":{},"data":data}) : helper)))
-    + "_category\" value=\"otherungulate\" type=\"checkbox\"> Ungulate, Other</label>      \n    </div>\n    <div class=\"species-block\">\n        <label class=\"checkbox\"><input name=\"chr_"
+    + "_category\" value=\"otherungulate\" type=\"checkbox\"> Ungulate, Other</label>\n    </div>\n    <div class=\"species-block\">\n        <label class=\"checkbox\"><input name=\"chr_"
     + escapeExpression(((helper = (helper = helpers.characterId || (depth0 != null ? depth0.characterId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"characterId","hash":{},"data":data}) : helper)))
     + "_category\" value=\"brownbear\" type=\"checkbox\"> Bear, Brown</label>\n        <label class=\"checkbox\"><input name=\"chr_"
     + escapeExpression(((helper = (helper = helpers.characterId || (depth0 != null ? depth0.characterId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"characterId","hash":{},"data":data}) : helper)))
@@ -129,7 +129,15 @@ templates['character'] = template({"1":function(depth0,helpers,partials,data) {
     + escapeExpression(((helper = (helper = helpers.characterId || (depth0 != null ? depth0.characterId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"characterId","hash":{},"data":data}) : helper)))
     + "_category\" value=\"bat\" type=\"checkbox\"> Bat</label>\n        <label class=\"checkbox\"><input name=\"chr_"
     + escapeExpression(((helper = (helper = helpers.characterId || (depth0 != null ? depth0.characterId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"characterId","hash":{},"data":data}) : helper)))
-    + "_category\" value=\"griffin\" type=\"checkbox\"> Griffin</label>\n    </div>\n    <br clear=\"all\" />\n    <label class=\"checkbox\"><input name=\"chr_"
+    + "_category\" value=\"griffin\" type=\"checkbox\"> Griffin</label>\n    </div>\n    <div class=\"species-block\">\n        <label class=\"checkbox\"><input name=\"chr_"
+    + escapeExpression(((helper = (helper = helpers.characterId || (depth0 != null ? depth0.characterId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"characterId","hash":{},"data":data}) : helper)))
+    + "_category\" value=\"taur\" type=\"checkbox\"> Taur</label>\n        <label class=\"checkbox\"><input name=\"chr_"
+    + escapeExpression(((helper = (helper = helpers.characterId || (depth0 != null ? depth0.characterId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"characterId","hash":{},"data":data}) : helper)))
+    + "_category\" value=\"anthro\" type=\"checkbox\"> Anthro</label>\n        <label class=\"checkbox\"><input name=\"chr_"
+    + escapeExpression(((helper = (helper = helpers.characterId || (depth0 != null ? depth0.characterId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"characterId","hash":{},"data":data}) : helper)))
+    + "_category\" value=\"feral\" type=\"checkbox\"> Feral</label>\n        <label class=\"checkbox\"><input name=\"chr_"
+    + escapeExpression(((helper = (helper = helpers.characterId || (depth0 != null ? depth0.characterId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"characterId","hash":{},"data":data}) : helper)))
+    + "_category\" value=\"polymorphic\" type=\"checkbox\"> Polymorphic</label>\n    </div>\n    <br clear=\"all\" />\n    <label class=\"checkbox\"><input name=\"chr_"
     + escapeExpression(((helper = (helper = helpers.characterId || (depth0 != null ? depth0.characterId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"characterId","hash":{},"data":data}) : helper)))
     + "_category\" value=\"other\" type=\"checkbox\"> Other</label>\n    <p>\n        Optionally, enter your own species text:</label>\n        <input name=\"chr_"
     + escapeExpression(((helper = (helper = helpers.characterId || (depth0 != null ? depth0.characterId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"characterId","hash":{},"data":data}) : helper)))

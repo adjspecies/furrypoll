@@ -1,5 +1,5 @@
 question_options = {
-    '_birth_year': [2015 - i for i in range(100)],
+    '_birth_year': [2016 - i for i in range(100)],
     'furry_status': {
         'furry': { 'subjective': False },
         'fur_fan': { 'subjective': False },
@@ -10,13 +10,10 @@ question_options = {
         'nonfurry': { 'subjective': False },
         'other': { 'subjective': True },
     },
-    'clinical_sex': {
-        'female': { 'subjective': False },
-        'male': { 'subjective': False },
-        'intersex': { 'subjective': False },
-        'mtf_female': { 'subjective': False },
-        'ftm_male': { 'subjective': False },
-        'other': { 'subjective': True },
+    'gender_alignment': {
+        'cisgender': { 'subjective': False },
+        'noncisgender': { 'subjective': False },
+        'complicated': { 'subjective': False },
     },
     'gender_identity': {
         'male': { 'subjective': False },
