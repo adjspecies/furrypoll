@@ -12,7 +12,7 @@ question_options = {
     },
     'gender_alignment': {
         'cisgender': { 'subjective': False },
-        'noncisgender': { 'subjective': False },
+        'transgender': { 'subjective': False },
         'complicated': { 'subjective': False },
     },
     'gender_identity': {
